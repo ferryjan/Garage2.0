@@ -36,6 +36,7 @@ namespace Garage2._0.Models
         }
 
         [Required]
+        [Display(Name = "Registeration Number")]
         [StringLength(6, ErrorMessage = "No more than 6 letters are allowed here!")]
         public string RegNum { get; set; }
 
@@ -43,12 +44,15 @@ namespace Garage2._0.Models
         public string Color { get; set; }
 
         [Required]
+        [Display(Name = "Parking Time")]
         public DateTime ParkTime { get; set; }
 
         [Range(0, 100, ErrorMessage = "Range: 0 - 100")]
+        [Display(Name = "Number of Tires")]
         public int NumOfTires { get; set; }
 
         [Required]
+        [Display(Name = "Model")]
         [StringLength(30, ErrorMessage = "No more than 30 letters are allowed here!")]
         public string Model { get; set; }
     }
