@@ -15,10 +15,19 @@ namespace Garage2._0.Controllers
         private Garage2_0Context db = new Garage2_0Context();
 
         // GET: Vehicles
-        public ActionResult Index()
+
+        public ActionResult Index(string option, string search)
         {
-            return View(db.Vehicles.ToList());
+            if (option == "RegNum")
+            {
+                return View(db.Vehicles.Where(e => e.RegNum == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Vehicles.Where(e => e.Color == search || search == null).ToList());
+            }
         }
+
 
         // GET: Vehicles/Details/5
         public ActionResult Details(int? id)
