@@ -43,8 +43,10 @@ namespace Garage2._0.Models
         [Required]
         public string Color { get; set; }
 
-        [Required]
+        
         private DateTime? parkTime;
+        [Required]
+        [Display(Name = "Checkin Time")]
         public DateTime ParkTime
         {
             get { return parkTime ?? DateTime.Now; }
