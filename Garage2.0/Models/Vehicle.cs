@@ -43,7 +43,10 @@ namespace Garage2._0.Models
         [Required]
         public string Color { get; set; }
 
+
         [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-ddThh:mm:ss}")]
         [Display(Name = "Parking Time")]
         public DateTime ParkTime { get; set; }
 
