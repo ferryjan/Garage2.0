@@ -45,10 +45,12 @@ namespace Garage2._0.Models
 
 
         [Required]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd hh:mm:ss}")]
-        [Display(Name = "Parking Time")]
-        public DateTime ParkTime { get; set; }
+        private DateTime? parkTime;
+        public DateTime ParkTime
+        {
+            get { return parkTime ?? DateTime.Now; }
+            set { parkTime = value; }
+        }
 
         [Range(0, 100, ErrorMessage = "Range: 0 - 100")]
         [Display(Name = "Number of Tires")]

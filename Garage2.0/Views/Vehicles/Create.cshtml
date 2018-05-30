@@ -42,8 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ParkTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.ParkTime, "{0:yyyy-MM-ddThh:mm:ss}", new { @class = "form-control", type = "datetime-local" })
-                @Html.ValidationMessageFor(m => m.ParkTime, "", new { @class = "text-danger" })
+                @Html.TextBox("ParkTime", DateTime.Now, new { @readonly = "readonly" })
             </div>
         </div>
 
