@@ -22,12 +22,15 @@ namespace Garage2._0.Controllers
             {
                 return View(db.Vehicles.Where(e => e.RegNum == search || search == null).ToList());
             }
+            else if (option == "VehicleType")
+            {
+                return View(db.Vehicles.Where(e => e.VehicleType.ToString() == search || search == null).ToList());
+            }
             else
             {
                 return View(db.Vehicles.Where(e => e.Color == search || search == null).ToList());
             }
         }
-
 
         // GET: Vehicles/Details/5
         public ActionResult Details(int? id)

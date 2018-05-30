@@ -29,7 +29,7 @@ namespace Garage2._0.Models
 
         public enum VehicleTypes
         {
-            Motocycle,
+            Motorcycle,
             Car,
             Truck,
             Van

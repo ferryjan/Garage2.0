@@ -13,10 +13,11 @@
 @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get))
 {
     <b> Search Option: </b> @Html.RadioButton("option", "RegNum") <text>Registeration Number</text> @Html.RadioButton("option", "Color") <text> Color </text>
+    @Html.RadioButton("option", "VehicleType") <text> VehicleType </text> 
     @Html.TextBox("search") <input type="submit" name="submit" value="Search" />
 }
 
-<br/>
+<br />
 
 <table class="table">
     <tr>
@@ -53,7 +54,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Check Out Vehicle", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
