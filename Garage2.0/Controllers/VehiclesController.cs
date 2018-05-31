@@ -136,6 +136,9 @@ namespace Garage2._0.Controllers
             double parkingPriceIn15Min = 5;
             TimeSpan diff = DateTime.Now - vehicle.ParkTime;
             var totalMinute = diff.TotalMinutes;
+            var numOfHour = Math.Floor(totalMinute / 60);
+            var numOfMin = Math.Ceiling(totalMinute - (Math.Floor(totalMinute / 60)) * 60);
+            var timeParked = numOfHour + " Hour" + numOfMin + " Min";
             var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
             var priceStr = price + " SEK";
 
@@ -146,8 +149,16 @@ namespace Garage2._0.Controllers
             ViewBag.Color = vehicle.Color;
             ViewBag.ParkTime = vehicle.ParkTime;
             ViewBag.Checkout = DateTime.Now;
+            ViewBag.TimeParked = timeParked;
             ViewBag.Price = priceStr;
             return View();
+        }
+
+        [HttpPost, ActionName("Receipt")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReceiptConfirmed(int id)
+        {
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

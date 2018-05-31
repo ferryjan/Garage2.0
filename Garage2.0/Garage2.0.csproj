@@ -168,6 +168,10 @@
     <Compile Include="Migrations\201805310655381_small-change.Designer.cs">
       <DependentUpon>201805310655381_small-change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311354379_stamptime-deleted.cs" />
+    <Compile Include="Migrations\201805311354379_stamptime-deleted.Designer.cs">
+      <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201805311419446_DeleteTypeId.cs" />
     <Compile Include="Migrations\201805311419446_DeleteTypeId.Designer.cs">
       <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
@@ -248,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805310655381_small-change.resx">
       <DependentUpon>201805310655381_small-change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311354379_stamptime-deleted.resx">
+      <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311419446_DeleteTypeId.resx">
       <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
