@@ -9,25 +9,6 @@ namespace Garage2._0.Models
 {
     public class Vehicle
     {
-        public int Id { get; set; }
-
-        [Required]
-        public virtual int TypeID
-        {
-            get
-            {
-                return (int)this.VehicleType;
-            }
-            set
-            {
-                VehicleType = (VehicleTypes)value;
-            }
-        }
-
-        [EnumDataType(typeof(VehicleTypes))]
-        [Display(Name = "Vehicle Type")]
-        public VehicleTypes VehicleType { get; set; }
-
         public enum VehicleTypes
         {
             Motorcycle,
@@ -35,6 +16,22 @@ namespace Garage2._0.Models
             Truck,
             Van
         }
+
+        public int Id { get; set; }
+
+        [Required]
+        public virtual int TypeID {
+            get {
+                return (int)this.VehicleType;
+            }
+            set {
+                VehicleType = (VehicleTypes)value;
+            }
+        }
+
+        [EnumDataType(typeof(VehicleTypes))]
+        [Display(Name = "Vehicle Type")]
+        public VehicleTypes VehicleType { get; set; }
 
         [Required]
         [Display(Name = "Registeration Number")]
@@ -45,12 +42,11 @@ namespace Garage2._0.Models
         [Required]
         public string Color { get; set; }
 
-        
+
         private DateTime? parkTime;
         [Required]
         [Display(Name = "Checkin Time")]
-        public DateTime ParkTime
-        {
+        public DateTime ParkTime {
             get { return parkTime ?? DateTime.Now; }
             set { parkTime = value; }
         }
@@ -66,8 +62,7 @@ namespace Garage2._0.Models
 
         public DateTime Timestamp { get; set; }
 
-        public Vehicle()
-        {
+        public Vehicle() {
             Timestamp = DateTime.Now;
         }
     }
