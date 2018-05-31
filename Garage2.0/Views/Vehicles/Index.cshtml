@@ -10,16 +10,15 @@
     @Html.ActionLink("Park New Vehicle", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Vehicles", FormMethod.Get))
-{
-    <b> Search Option: </b> @Html.RadioButton("option", "RegNum") <text>Registeration Number</text> @Html.RadioButton("option", "Color") <text> Color </text>
-    @Html.RadioButton("option", "VehicleType") <text> Vehicle Type </text> 
+@using (Html.BeginForm("Index", "Vehicles", FormMethod.Get)) {
+    <b> Search Option: </b> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> @Html.RadioButton("option", "Color") <text> Color </text>
+    @Html.RadioButton("option", "VehicleType") <text> VehicleType </text>
     @Html.TextBox("search") <input type="submit" name="submit" value="Search" />
 }
 
 <br />
 
-<table class="table">
+<table class="table sortable">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.VehicleType)
