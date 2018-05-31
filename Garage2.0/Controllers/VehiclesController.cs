@@ -130,7 +130,7 @@ namespace Garage2._0.Controllers
         public ActionResult Receipt(Vehicle vehicle)
         {
             double parkingPriceIn15Min = 5;
-            TimeSpan diff = DateTime.Now.AddDays(1) - vehicle.ParkTime;
+            TimeSpan diff = DateTime.Now - vehicle.ParkTime;
             var totalMinute = diff.TotalMinutes;
             var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
             var priceStr = price + " SEK";
@@ -141,7 +141,7 @@ namespace Garage2._0.Controllers
             ViewBag.NumOfTires = vehicle.NumOfTires;
             ViewBag.Color = vehicle.Color;
             ViewBag.ParkTime = vehicle.ParkTime;
-            ViewBag.Checkout = DateTime.Now.AddDays(1);
+            ViewBag.Checkout = DateTime.Now;
             ViewBag.Price = priceStr;
             return View();
         }
