@@ -11,11 +11,17 @@ namespace Garage2._0.Validators
     {
         protected override ValidationResult IsValid(object regnumInput, ValidationContext validationContext)
         {
+            /**
+             * TODO: Update does not work because when this validator checks the DB if the RegNum exists,
+             * it includes the object to be updated
+             */
             try
             {
                 Garage2_0Context db = new Garage2_0Context();
 
-                var result = db.Vehicles.FirstOrDefault(v => v.RegNum == regnumInput.ToString());
+                Vehicle vehicle = (Vehicle) validationContext.ObjectInstance;
+
+                var result = db.Vehicles.FirstOrDefault(v => v.RegNum == regnumInput.ToString() && v.Id != vehicle.Id);
                 if (result == null)
                 {
                       return ValidationResult.Success;

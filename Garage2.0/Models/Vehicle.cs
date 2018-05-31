@@ -7,27 +7,17 @@ using System.Web;
 
 namespace Garage2._0.Models
 {
+    public enum VehicleTypes
+    {
+        Motorcycle,
+        Car,
+        Truck,
+        Van
+    }
+
     public class Vehicle
     {
-        public enum VehicleTypes
-        {
-            Motorcycle,
-            Car,
-            Truck,
-            Van
-        }
-
         public int Id { get; set; }
-
-        [Required]
-        public virtual int TypeID {
-            get {
-                return (int)this.VehicleType;
-            }
-            set {
-                VehicleType = (VehicleTypes)value;
-            }
-        }
 
         [EnumDataType(typeof(VehicleTypes))]
         [Display(Name = "Vehicle Type")]
@@ -41,7 +31,6 @@ namespace Garage2._0.Models
 
         [Required]
         public string Color { get; set; }
-
 
         private DateTime? parkTime;
         [Required]
@@ -57,7 +46,6 @@ namespace Garage2._0.Models
         public int NumOfTires { get; set; }
 
         [Required]
-        [Display(Name = "Model")]
         [StringLength(30, ErrorMessage = "No more than 30 letters are allowed here!")]
         public string Model { get; set; }
 
