@@ -19,6 +19,6 @@ namespace Garage2._0.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Garage2._0.Models.Vehicle> Vehicles { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
     }
 }
