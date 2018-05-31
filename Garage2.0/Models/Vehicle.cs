@@ -34,7 +34,7 @@ namespace Garage2._0.Models
         public VehicleTypes VehicleType { get; set; }
 
         [Required]
-        [Display(Name = "Registeration Number")]
+        [Display(Name = "Registration Number")]
         [StringLength(6, ErrorMessage = "No more than 6 letters are allowed here!")]
         [RegNumValidator]
         public string RegNum { get; set; }
