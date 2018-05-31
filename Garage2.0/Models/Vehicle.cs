@@ -45,8 +45,9 @@ namespace Garage2._0.Models
 
         private DateTime? parkTime;
         [Required]
-        [Display(Name = "Checkin Time")]
-        public DateTime ParkTime {
+        [Display(Name = "Check-in Time")]
+        public DateTime ParkTime
+        {
             get { return parkTime ?? DateTime.Now; }
             set { parkTime = value; }
         }
