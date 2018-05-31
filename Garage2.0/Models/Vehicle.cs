@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage2._0.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -38,6 +39,7 @@ namespace Garage2._0.Models
         [Required]
         [Display(Name = "Registeration Number")]
         [StringLength(6, ErrorMessage = "No more than 6 letters are allowed here!")]
+        [RegNumValidator]
         public string RegNum { get; set; }
 
         [Required]
