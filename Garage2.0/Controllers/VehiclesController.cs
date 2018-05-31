@@ -133,6 +133,7 @@ namespace Garage2._0.Controllers
             TimeSpan diff = DateTime.Now.AddDays(1) - vehicle.ParkTime;
             var totalMinute = diff.TotalMinutes;
             var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
+            var priceStr = price + " SEK";
 
             ViewBag.VehicleType = vehicle.VehicleType;
             ViewBag.RegNum = vehicle.RegNum;
@@ -141,7 +142,7 @@ namespace Garage2._0.Controllers
             ViewBag.Color = vehicle.Color;
             ViewBag.ParkTime = vehicle.ParkTime;
             ViewBag.Checkout = DateTime.Now.AddDays(1);
-            ViewBag.Price = price;
+            ViewBag.Price = priceStr;
             return View();
         }
 
