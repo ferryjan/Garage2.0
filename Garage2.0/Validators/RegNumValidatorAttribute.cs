@@ -22,12 +22,12 @@ namespace Garage2._0.Validators
                 }
                 else
                 {
-                    return new ValidationResult("This registeration number already exists");
+                    return new ValidationResult("This registration number already exists");
                 }
             }
             catch (Exception)
             {
-                return new ValidationResult("Invaid input");
+                return new ValidationResult("Invalid input");
             }
         }
     }

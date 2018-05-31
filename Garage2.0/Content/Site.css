@@ -22,3 +22,21 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/* Sortable table stylings by Robert H */
+table.sortable th {
+    cursor: pointer;
+}
+
+table.sortable .ordered {
+    text-decoration: underline;
+}
+
+    table.sortable .ordered.asc::after {
+        content: "\25BE";
+    }
+
+    table.sortable .ordered.desc::after {
+        content: "\25B4";
+    }
