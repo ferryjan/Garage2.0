@@ -20,15 +20,15 @@ namespace Garage2._0.Controllers
         {
             if (option == "RegNum")
             {
-                return View(db.Vehicles.Where(e => e.RegNum == search || search == null).ToList());
+                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
             }
             else if (option == "VehicleType")
             {
-                return View(db.Vehicles.Where(e => e.VehicleType.ToString() == search || search == null).ToList());
+                return View(db.Vehicles.Where(e => e.VehicleType.ToString().ToLower() == search.ToLower() || search == null).ToList());
             }
             else
             {
-                return View(db.Vehicles.Where(e => e.Color == search || search == null).ToList());
+                return View(db.Vehicles.Where(e => e.Color == search.ToLower() || search.ToLower() == null).ToList());
             }
         }
 
@@ -124,7 +124,25 @@ namespace Garage2._0.Controllers
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Receipt", vehicle);
+        }
+
+        public ActionResult Receipt(Vehicle vehicle)
+        {
+            double parkingPriceIn15Min = 5;
+            TimeSpan diff = DateTime.Now.AddDays(1) - vehicle.ParkTime;
+            var totalMinute = diff.TotalMinutes;
+            var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
+
+            ViewBag.VehicleType = vehicle.VehicleType;
+            ViewBag.RegNum = vehicle.RegNum;
+            ViewBag.Model = vehicle.Model;
+            ViewBag.NumOfTires = vehicle.NumOfTires;
+            ViewBag.Color = vehicle.Color;
+            ViewBag.ParkTime = vehicle.ParkTime;
+            ViewBag.Checkout = DateTime.Now.AddDays(1);
+            ViewBag.Price = price;
+            return View();
         }
 
         protected override void Dispose(bool disposing)

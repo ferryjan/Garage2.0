@@ -1,0 +1,82 @@
+﻿@model Garage2._0.Models.Vehicle
+
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<h2>Receipt</h2>
+
+<div>
+    <h4>Vehicle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </dt>
+
+        <dd>
+            @ViewBag.VehicleType
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegNum)
+        </dt>
+
+        <dd>
+            @ViewBag.RegNum
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @ViewBag.Color
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumOfTires)
+        </dt>
+
+        <dd>
+            @ViewBag.NumOfTires
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @ViewBag.Model
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkTime)
+        </dt>
+
+        <dd>
+            @ViewBag.ParkTime
+        </dd>
+
+        <dt>
+            Check-out Time
+        </dt>
+
+        <dd>
+            @ViewBag.Checkout
+        </dd>
+
+        <dt>
+            Parking Price
+        </dt>
+
+        <dd>
+            @ViewBag.Price
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("OK", "Index")
+</p>
