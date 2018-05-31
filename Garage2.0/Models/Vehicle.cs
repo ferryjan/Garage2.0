@@ -60,11 +60,5 @@ namespace Garage2._0.Models
         [Display(Name = "Model")]
         [StringLength(30, ErrorMessage = "No more than 30 letters are allowed here!")]
         public string Model { get; set; }
-
-        public DateTime Timestamp { get; set; }
-
-        public Vehicle() {
-            Timestamp = DateTime.Now;
-        }
     }
 }
