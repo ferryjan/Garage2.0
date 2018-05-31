@@ -102,6 +102,7 @@ namespace Garage2._0.Controllers
         }
 
         // GET: Vehicles/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -119,16 +120,19 @@ namespace Garage2._0.Controllers
         // POST: Vehicles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id) {
+            // Actual delete is made in Receipt in order to avoid an enormous GET query string,
+            // which could be manipulated by user
+            return RedirectToAction("Receipt", new { id });
+        }
+
+        // GET: Vehicles/Receipt/5
+        public ActionResult Receipt(int id)
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            return RedirectToAction("Receipt", vehicle);
-        }
 
-        public ActionResult Receipt(Vehicle vehicle)
-        {
             double parkingPriceIn15Min = 5;
             TimeSpan diff = DateTime.Now - vehicle.ParkTime;
             var totalMinute = diff.TotalMinutes;
