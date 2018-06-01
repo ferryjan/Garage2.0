@@ -55,5 +55,7 @@ namespace Garage2._0.Models
         [Required]
         [StringLength(30, ErrorMessage = "No more than 30 letters are allowed here!")]
         public string Model { get; set; }
+
+        public int[] ParkingSpaceNum { get; set; }
     }
 }

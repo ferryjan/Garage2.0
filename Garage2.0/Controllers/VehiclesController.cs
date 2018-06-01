@@ -12,10 +12,21 @@ namespace Garage2._0.Controllers
 {
     public class VehiclesController : Controller
     {
+        /*
+         *       Truck: 2 parking spaces
+         *         Van: 1 parking space
+         *         Car: 1 parking space
+         *  Motorcycle: 1/3 parking space
+         * 
+         */
+
+        public int parkingCapacity = 10;
         private Garage2_0Context db = new Garage2_0Context();
 
         // GET: Vehicles
         public ActionResult Index(string option, string search) {
+            ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            ViewBag.AvailableSpaces = ps.GetNumOfAvailableSpace();
             if (option == "RegNum") {
                 return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
             } else if (option == "VehicleType") {
@@ -49,12 +60,33 @@ namespace Garage2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,VehicleType,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
             vehicle.CheckInTime = DateTime.Now;
-            if (ModelState.IsValid) {
-                db.Vehicles.Add(vehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            var index = ps.AssignParkingSpace(vehicle);
 
+            if (ModelState.IsValid) {
+                if (index != -1)
+                {
+                    if (vehicle.VehicleType == VehicleTypes.Car || vehicle.VehicleType == VehicleTypes.Van || vehicle.VehicleType == VehicleTypes.Motorcycle)
+                    {
+                        int[] p = new int[1];
+                        p[0] = index;
+                        vehicle.ParkingSpaceNum = p;
+                        db.Vehicles.Add(vehicle);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        int[] p = new int[2];
+                        p[0] = index;
+                        p[1] = index + 1;
+                        vehicle.ParkingSpaceNum = p;
+                        db.Vehicles.Add(vehicle);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }          
+            }
             return View(vehicle);
         }
 

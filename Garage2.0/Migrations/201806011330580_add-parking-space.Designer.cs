@@ -7,13 +7,13 @@ namespace Garage2._0.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class ColorToEnum : IMigrationMetadata
+    public sealed partial class addparkingspace : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ColorToEnum));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addparkingspace));
         
         string IMigrationMetadata.Id
         {
-            get { return "201806010932144_ColorToEnum"; }
+            get { return "201806011330580_add-parking-space"; }
         }
         
         string IMigrationMetadata.Source
