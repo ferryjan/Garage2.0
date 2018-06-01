@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201805311354379_stamptime-deleted.Designer.cs">
       <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805311419446_DeleteTypeId.cs" />
+    <Compile Include="Migrations\201805311419446_DeleteTypeId.Designer.cs">
+      <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -251,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311354379_stamptime-deleted.resx">
       <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311419446_DeleteTypeId.resx">
+      <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
