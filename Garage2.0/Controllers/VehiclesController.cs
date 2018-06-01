@@ -137,8 +137,8 @@ namespace Garage2._0.Controllers
             TimeSpan diff = DateTime.Now - vehicle.ParkTime;
             var totalMinute = diff.TotalMinutes;
             var numOfHour = Math.Floor(totalMinute / 60);
-            var numOfMin = Math.Ceiling(totalMinute - (Math.Floor(totalMinute / 60)) * 60);
-            var timeParked = numOfHour + " Hour" + numOfMin + " Min";
+            var numOfMin = Math.Ceiling(totalMinute - numOfHour * 60);
+            var timeParked = numOfHour + " Hour " + numOfMin + " Min";
             var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
             var priceStr = price + " SEK";
 
