@@ -1,0 +1,8 @@
+﻿@model Dictionary<Enum, int>
+
+@foreach (var kvp in Model) {
+    <div>
+        <span>@kvp.Key</span>
+        <span>@kvp.Value</span>
+    </div>
+}
