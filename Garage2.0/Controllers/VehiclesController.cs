@@ -15,7 +15,6 @@ namespace Garage2._0.Controllers
         private Garage2_0Context db = new Garage2_0Context();
 
         // GET: Vehicles
-
         public ActionResult Index(string option, string search)
         {
             if (option == "RegNum")
@@ -58,7 +57,7 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TypeID,VehicleType,RegNum,Color,ParkTime,NumOfTires,Model")] Vehicle vehicle)
+        public ActionResult Create([Bind(Include = "Id,VehicleType,RegNum,Color,CheckInTime,NumOfTires,Model")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +89,7 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TypeID,VehicleType,RegNum,Color,ParkTime,NumOfTires,Model")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,VehicleType,RegNum,Color,CheckInTime,NumOfTires,Model")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +133,7 @@ namespace Garage2._0.Controllers
             db.SaveChanges();
 
             double parkingPriceIn15Min = 5;
-            TimeSpan diff = DateTime.Now - vehicle.ParkTime;
+            TimeSpan diff = DateTime.Now - vehicle.CheckInTime;
             var totalMinute = diff.TotalMinutes;
             var numOfHour = Math.Floor(totalMinute / 60);
             var numOfMin = Math.Ceiling(totalMinute - numOfHour * 60);
@@ -147,13 +146,14 @@ namespace Garage2._0.Controllers
             ViewBag.Model = vehicle.Model;
             ViewBag.NumOfTires = vehicle.NumOfTires;
             ViewBag.Color = vehicle.Color;
-            ViewBag.ParkTime = vehicle.ParkTime;
+            ViewBag.CheckInTime = vehicle.CheckInTime;
             ViewBag.Checkout = DateTime.Now;
             ViewBag.TimeParked = timeParked;
             ViewBag.Price = priceStr;
             return View();
         }
 
+        // Why does this exist?
         [HttpPost, ActionName("Receipt")]
         [ValidateAntiForgeryToken]
         public ActionResult ReceiptConfirmed(int id)

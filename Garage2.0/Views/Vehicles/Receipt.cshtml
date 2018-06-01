@@ -10,88 +10,68 @@
     <h4>Vehicle</h4>
     <hr />
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.VehicleType)
         </dt>
-
         <dd>
             @ViewBag.VehicleType
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.RegNum)
         </dt>
-
         <dd>
             @ViewBag.RegNum
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Color)
         </dt>
-
         <dd>
             @ViewBag.Color
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.NumOfTires)
         </dt>
-
         <dd>
             @ViewBag.NumOfTires
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Model)
         </dt>
-
         <dd>
             @ViewBag.Model
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.ParkTime)
+            @Html.DisplayNameFor(model => model.CheckInTime)
         </dt>
-
         <dd>
-            @ViewBag.ParkTime
+            @ViewBag.CheckInTime
         </dd>
-
         <dt>
             Check-out Time
         </dt>
-
         <dd>
             @ViewBag.Checkout
         </dd>
-
         <dt>
             Time Parked
         </dt>
-
         <dd>
             @ViewBag.TimeParked
         </dd>
-
         <dt>
             Parking Price (5 SEK/ 15 Min)
         </dt>
-
         <dd>
             @ViewBag.Price
         </dd>
-
     </dl>
 </div>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Confirm" class="btn btn-primary" /> 
-        </div>
-    }
+    <div class="form-actions no-color">
+        <input type="submit" value="Confirm" class="btn btn-primary" />
+    </div>
+}
 
