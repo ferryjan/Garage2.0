@@ -44,3 +44,17 @@ table.sortable .ordered {
     table.sortable .ordered.desc::after {
         content: "\25B4";
     }
+
+
+/* Statistics page stylings by Robert H */
+.statistics dt {
+    width: 300px;
+}
+.statistics dd {
+    margin-left: 350px;
+    margin-bottom: 20px;
+}
+.statistics dd .key {
+    display: inline-block;
+    width: 100px;
+}
