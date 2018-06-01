@@ -1,6 +1,10 @@
 ﻿body {
+    background-image: url('http://efc.web.unc.edu/files/2014/06/ParkingLot.jpg');
+    background-size: cover;
+    margin: 0;
     padding-top: 50px;
     padding-bottom: 20px;
+    color: rgb(70, 211, 31);
 }
 
 /* Set padding to keep content from hitting the edges */
