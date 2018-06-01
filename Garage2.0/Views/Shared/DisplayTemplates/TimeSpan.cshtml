@@ -1,0 +1,3 @@
+﻿@model TimeSpan?
+
+@(Model.HasValue ? Html.Raw((int)Math.Floor(Model.Value.TotalHours) + "&nbsp;hours&nbsp;" + Model.Value.Minutes + "&nbsp;min") : Html.Raw("&ndash;"))

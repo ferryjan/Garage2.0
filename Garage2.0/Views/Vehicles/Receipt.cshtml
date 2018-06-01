@@ -1,4 +1,4 @@
-﻿@model Garage2._0.Models.Vehicle
+﻿@model Garage2._0.Models.ReceiptViewModel
 
 @{
     ViewBag.Title = "Receipt";
@@ -14,64 +14,58 @@
             @Html.DisplayNameFor(model => model.VehicleType)
         </dt>
         <dd>
-            @ViewBag.VehicleType
+            @Html.DisplayFor(model => model.VehicleType)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.RegNum)
         </dt>
         <dd>
-            @ViewBag.RegNum
+            @Html.DisplayFor(model => model.RegNum)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Color)
         </dt>
         <dd>
-            @ViewBag.Color
+            @Html.DisplayFor(model => model.Color)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.NumOfTires)
         </dt>
         <dd>
-            @ViewBag.NumOfTires
+            @Html.DisplayFor(model => model.NumOfTires)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Model)
         </dt>
         <dd>
-            @ViewBag.Model
+            @Html.DisplayFor(model => model.Model)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CheckInTime)
         </dt>
         <dd>
-            @ViewBag.CheckInTime
+            @Html.DisplayFor(model => model.CheckInTime)
         </dd>
         <dt>
-            Check-out Time
+            @Html.DisplayNameFor(model => model.CheckOutTime)
         </dt>
         <dd>
-            @ViewBag.Checkout
+            @Html.DisplayFor(model => model.CheckOutTime)
         </dd>
         <dt>
-            Time Parked
+            @Html.DisplayNameFor(model => model.TimeParked)
         </dt>
         <dd>
-            @ViewBag.TimeParked
+            @Html.DisplayFor(model => model.TimeParked)
         </dd>
         <dt>
-            Parking Price (5 SEK/ 15 Min)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd>
-            @ViewBag.Price
+            @Html.DisplayFor(model => model.Price)
         </dd>
     </dl>
 </div>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        <input type="submit" value="Confirm" class="btn btn-primary" />
-    </div>
-}
+@Html.ActionLink("Back to Index", "Index")
 
