@@ -17,7 +17,7 @@ namespace Garage2._0.Models
         [Display(Name = "Registration Number")]
         public string RegNum { get; set; }
 
-        public string Color { get; set; }
+        public Colors Color { get; set; }
 
         [Display(Name = "Number of Tires")]
         public int NumOfTires { get; set; }
