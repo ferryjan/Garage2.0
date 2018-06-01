@@ -45,6 +45,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
+            if (vehicle.VehicleType == VehicleTypes.Truck)
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            }
             return View(vehicle);
         }
 
@@ -66,26 +74,16 @@ namespace Garage2._0.Controllers
             if (ModelState.IsValid) {
                 if (index != -1)
                 {
-                    if (vehicle.VehicleType == VehicleTypes.Car || vehicle.VehicleType == VehicleTypes.Van || vehicle.VehicleType == VehicleTypes.Motorcycle)
-                    {
-                        int[] p = new int[1];
-                        p[0] = index;
-                        vehicle.ParkingSpaceNum = p;
-                        db.Vehicles.Add(vehicle);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                    else
-                    {
-                        int[] p = new int[2];
-                        p[0] = index;
-                        p[1] = index + 1;
-                        vehicle.ParkingSpaceNum = p;
-                        db.Vehicles.Add(vehicle);
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
-                    }
-                }          
+                    ViewBag.isFull = "";
+                    vehicle.ParkingSpaceNum = index;
+                    db.Vehicles.Add(vehicle);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.isFull = "There is no place to park your vehicle, sorry!";
+                }
             }
             return View(vehicle);
         }
@@ -126,6 +124,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
+            if (vehicle.VehicleType == VehicleTypes.Truck)
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            }
             return View(vehicle);
         }
 
@@ -141,6 +147,8 @@ namespace Garage2._0.Controllers
         // GET: Vehicles/Receipt/5
         public ActionResult Receipt(int id) {
             Vehicle vehicle = db.Vehicles.Find(id);
+            ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            ps.RemoveFromParkingSpace(vehicle);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
 

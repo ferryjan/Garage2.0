@@ -153,17 +153,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\VehicleHelpers.cs" />
-    <Compile Include="Migrations\201806010738240_init.cs" />
-    <Compile Include="Migrations\201806010738240_init.Designer.cs">
-      <DependentUpon>201806010738240_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.cs" />
-    <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.Designer.cs">
-      <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201806011330580_add-parking-space.cs" />
-    <Compile Include="Migrations\201806011330580_add-parking-space.Designer.cs">
-      <DependentUpon>201806011330580_add-parking-space.cs</DependentUpon>
+    <Compile Include="Migrations\201806011729025_changes.cs" />
+    <Compile Include="Migrations\201806011729025_changes.Designer.cs">
+      <DependentUpon>201806011729025_changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -237,14 +229,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806010738240_init.resx">
-      <DependentUpon>201806010738240_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806010743554_removing-non-nullable-for-color.resx">
-      <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806011330580_add-parking-space.resx">
-      <DependentUpon>201806011330580_add-parking-space.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806011729025_changes.resx">
+      <DependentUpon>201806011729025_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
