@@ -1,0 +1,2 @@
+﻿@model int?
+@(Model.HasValue ? Html.Raw(Model.Value + "&nbsp;kr") : Html.Raw("&ndash;"))

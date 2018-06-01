@@ -1,4 +1,4 @@
-﻿@model Garage2._0.Models.ParkingReceipt
+﻿@model Garage2._0.Models.ReceiptViewModel
 
 @{
     ViewBag.Title = "Receipt";
@@ -11,22 +11,46 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VehicleType)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.RegNum)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.RegNum)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ParkTime)
+            @Html.DisplayNameFor(model => model.Color)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.ParkTime)
+            @Html.DisplayFor(model => model.Color)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CheckOut)
+            @Html.DisplayNameFor(model => model.NumOfTires)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CheckOut)
+            @Html.DisplayFor(model => model.NumOfTires)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckInTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckInTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOutTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CheckOutTime)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.TimeParked)
@@ -43,11 +67,5 @@
     </dl>
 </div>
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-        <input type="submit" value="Confirm" class="btn btn-primary" />
-    </div>
-}
+@Html.ActionLink("Back to Index", "Index")
 
