@@ -142,16 +142,14 @@ namespace Garage2._0.Controllers
             var price = Math.Ceiling(totalMinute / 15) * parkingPriceIn15Min;
             var priceStr = price + " SEK";
 
-            ViewBag.VehicleType = vehicle.VehicleType;
-            ViewBag.RegNum = vehicle.RegNum;
-            ViewBag.Model = vehicle.Model;
-            ViewBag.NumOfTires = vehicle.NumOfTires;
-            ViewBag.Color = vehicle.Color;
-            ViewBag.ParkTime = vehicle.ParkTime;
-            ViewBag.Checkout = DateTime.Now;
-            ViewBag.TimeParked = timeParked;
-            ViewBag.Price = priceStr;
-            return View();
+            ParkingReceipt pr = new ParkingReceipt();
+
+            pr.RegNum = vehicle.RegNum;
+            pr.ParkTime = vehicle.ParkTime;
+            pr.CheckOut = DateTime.Now;
+            pr.TimeParked = timeParked;
+            pr.Price = priceStr;
+            return View(pr);
         }
 
         [HttpPost, ActionName("Receipt")]

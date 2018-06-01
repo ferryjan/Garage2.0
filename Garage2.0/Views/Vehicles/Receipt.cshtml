@@ -1,4 +1,4 @@
-﻿@model Garage2._0.Models.Vehicle
+﻿@model Garage2._0.Models.ParkingReceipt
 
 @{
     ViewBag.Title = "Receipt";
@@ -12,43 +12,11 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.VehicleType)
-        </dt>
-
-        <dd>
-            @ViewBag.VehicleType
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.RegNum)
         </dt>
 
         <dd>
-            @ViewBag.RegNum
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @ViewBag.Color
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumOfTires)
-        </dt>
-
-        <dd>
-            @ViewBag.NumOfTires
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @ViewBag.Model
+            @Html.DisplayFor(model => model.RegNum)
         </dd>
 
         <dt>
@@ -56,31 +24,31 @@
         </dt>
 
         <dd>
-            @ViewBag.ParkTime
+            @Html.DisplayFor(model => model.ParkTime)
         </dd>
 
         <dt>
-            Check-out Time
+            @Html.DisplayNameFor(model => model.CheckOut)
         </dt>
 
         <dd>
-            @ViewBag.Checkout
+            @Html.DisplayFor(model => model.CheckOut)
         </dd>
 
         <dt>
-            Time Parked
+            @Html.DisplayNameFor(model => model.TimeParked)
         </dt>
 
         <dd>
-            @ViewBag.TimeParked
+            @Html.DisplayFor(model => model.TimeParked)
         </dd>
 
         <dt>
-            Parking Price (5 SEK/ 15 Min)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
 
         <dd>
-            @ViewBag.Price
+            @Html.DisplayFor(model => model.Price)
         </dd>
 
     </dl>

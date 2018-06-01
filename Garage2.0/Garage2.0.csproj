@@ -162,6 +162,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
+    <Compile Include="Models\ParkingReceipt.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\RegNumValidatorAttribute.cs" />
