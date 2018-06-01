@@ -41,7 +41,7 @@ namespace Garage2._0.Models
         public ReceiptViewModel(Vehicle vehicle) {
             VehicleType = vehicle.VehicleType;
             RegNum = vehicle.RegNum;
-            Color = vehicle.Color.GetType().ToString();
+            Color = vehicle.Color;
             NumOfTires = vehicle.NumOfTires;
             Model = vehicle.Model;
             CheckInTime = vehicle.CheckInTime;
