@@ -44,14 +44,9 @@ namespace Garage2._0.Models
         [EnumDataType(typeof(Colors))]
         public Colors Color { get; set; }
 
-        private DateTime? checkInTime;
         [Required]
         [Display(Name = "Check-in Time")]
-        public DateTime CheckInTime
-        {
-            get { return checkInTime ?? DateTime.Now; }
-            set { checkInTime = value; }
-        }
+        public DateTime CheckInTime { get; set; }
 
         [Range(0, 100, ErrorMessage = "Range: 0 - 100")]
         [Display(Name = "Number of Tires")]
