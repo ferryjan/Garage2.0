@@ -144,7 +144,7 @@ namespace Garage2._0.Controllers
             ParkingReceipt pr = new ParkingReceipt();
 
             pr.RegNum = vehicle.RegNum;
-            pr.ParkTime = vehicle.ParkTime;
+            pr.ParkTime = vehicle.CheckInTime;
             pr.CheckOut = DateTime.Now;
             pr.TimeParked = timeParked;
             pr.Price = priceStr;

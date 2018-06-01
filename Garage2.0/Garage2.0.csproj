@@ -160,6 +160,10 @@
     <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.Designer.cs">
       <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806010847581_fixing-conflict.cs" />
+    <Compile Include="Migrations\201806010847581_fixing-conflict.Designer.cs">
+      <DependentUpon>201806010847581_fixing-conflict.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
     <Compile Include="Models\ParkingReceipt.cs" />
@@ -235,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806010819190_RenamedParkTime.resx">
       <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010847581_fixing-conflict.resx">
+      <DependentUpon>201806010847581_fixing-conflict.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
