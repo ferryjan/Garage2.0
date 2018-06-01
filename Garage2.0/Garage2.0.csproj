@@ -176,8 +176,13 @@
     <Compile Include="Migrations\201805311419446_DeleteTypeId.Designer.cs">
       <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806010819190_RenamedParkTime.cs" />
+    <Compile Include="Migrations\201806010819190_RenamedParkTime.Designer.cs">
+      <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
+    <Compile Include="Models\ReceiptViewModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\RegNumValidatorAttribute.cs" />
@@ -258,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805311419446_DeleteTypeId.resx">
       <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010819190_RenamedParkTime.resx">
+      <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

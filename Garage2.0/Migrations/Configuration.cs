@@ -16,9 +16,9 @@ namespace Garage2._0.Migrations
         protected override void Seed(Garage2_0Context context) {
             context.Vehicles.AddOrUpdate(
                 v => v.RegNum,
-                new Vehicle { VehicleType = VehicleTypes.Car, Color = "Blue", RegNum = "ABC123", Model = "Volvo", NumOfTires = 4, ParkTime = DateTime.Now },
-                new Vehicle { VehicleType = VehicleTypes.Motorcycle, Color = "Black", RegNum = "XYZ789", Model = "Yamaha", NumOfTires = 2, ParkTime = DateTime.Now.AddDays(-1) },
-                new Vehicle { VehicleType = VehicleTypes.Truck, Color = "White", RegNum = "AAA111", Model = "Scania", NumOfTires = 8, ParkTime = DateTime.Now.AddDays(-2) }
+                new Vehicle { VehicleType = VehicleTypes.Car, Color = "Blue", RegNum = "ABC123", Model = "Volvo", NumOfTires = 4, CheckInTime = DateTime.Now },
+                new Vehicle { VehicleType = VehicleTypes.Motorcycle, Color = "Black", RegNum = "XYZ789", Model = "Yamaha", NumOfTires = 2, CheckInTime = DateTime.Now.AddDays(-1) },
+                new Vehicle { VehicleType = VehicleTypes.Truck, Color = "White", RegNum = "AAA111", Model = "Scania", NumOfTires = 8, CheckInTime = DateTime.Now.AddDays(-2) }
             );
         }
     }
