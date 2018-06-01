@@ -163,6 +163,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
     <Compile Include="Models\ParkingReceipt.cs" />
+    <Compile Include="Models\ReceiptViewModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\RegNumValidatorAttribute.cs" />
@@ -231,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806010743554_removing-non-nullable-for-color.resx">
       <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010819190_RenamedParkTime.resx">
+      <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

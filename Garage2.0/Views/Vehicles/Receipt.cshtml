@@ -10,56 +10,44 @@
     <h4>Vehicle</h4>
     <hr />
     <dl class="dl-horizontal">
-
         <dt>
             @Html.DisplayNameFor(model => model.RegNum)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.RegNum)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ParkTime)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.ParkTime)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.CheckOut)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.CheckOut)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.TimeParked)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.TimeParked)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Price)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Price)
         </dd>
-
     </dl>
 </div>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Confirm" class="btn btn-primary" /> 
-        </div>
-    }
+    <div class="form-actions no-color">
+        <input type="submit" value="Confirm" class="btn btn-primary" />
+    </div>
+}
 

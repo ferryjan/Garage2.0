@@ -44,13 +44,13 @@ namespace Garage2._0.Models
         [EnumDataType(typeof(Colors))]
         public Colors Color { get; set; }
 
-        private DateTime? parkTime;
+        private DateTime? checkInTime;
         [Required]
         [Display(Name = "Check-in Time")]
-        public DateTime ParkTime
+        public DateTime CheckInTime
         {
-            get { return parkTime ?? DateTime.Now; }
-            set { parkTime = value; }
+            get { return checkInTime ?? DateTime.Now; }
+            set { checkInTime = value; }
         }
 
         [Range(0, 100, ErrorMessage = "Range: 0 - 100")]
