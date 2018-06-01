@@ -1,0 +1,64 @@
+﻿@model Garage2._0.Models.StatisticsViewModel
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<h2>Statistics</h2>
+
+<div>
+    <dl class="dl-horizontal statistics">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfVehicles)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfVehicles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfVehiclesPerColor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfVehiclesPerColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfVehiclesPerType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfVehiclesPerType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfWheels)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfWheels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EarliestCheckInTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EarliestCheckInTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LatestCheckInTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LatestCheckInTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

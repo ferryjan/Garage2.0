@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Garage2._0.Helpers;
 
 namespace Garage2._0.Models
 {
     public class ReceiptViewModel
     {
-        private static int _parkingPriceIn15Min = 5;
-
         [EnumDataType(typeof(VehicleTypes))]
         [Display(Name = "Vehicle Type")]
         public VehicleTypes VehicleType { get; set; }
@@ -47,7 +46,7 @@ namespace Garage2._0.Models
             CheckInTime = vehicle.CheckInTime;
             CheckOutTime = DateTime.Now;
             TimeParked = CheckOutTime - CheckInTime;
-            Price = (int) Math.Ceiling(TimeParked.TotalMinutes / 15) * _parkingPriceIn15Min;
+            Price = VehicleHelpers.CalculateParkingPrice(TimeParked);
         }
     }
 }

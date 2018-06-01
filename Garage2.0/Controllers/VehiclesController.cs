@@ -148,6 +148,13 @@ namespace Garage2._0.Controllers
             return View(model);
         }
 
+        // GET: /Statistics/
+        public ActionResult Statistics() {
+            var vehicles = db.Vehicles.ToList();
+            var model = new StatisticsViewModel(vehicles);
+            return View(model);
+        }
+
         protected override void Dispose(bool disposing) {
             if (disposing) {
                 db.Dispose();
