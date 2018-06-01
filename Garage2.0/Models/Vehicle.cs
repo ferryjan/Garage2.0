@@ -15,6 +15,18 @@ namespace Garage2._0.Models
         Van
     }
 
+    public enum Colors
+    {
+        Red,
+        Blue,
+        White,
+        Silver,
+        Black,
+        Grey,
+        Brown,
+        Green
+    }
+
     public class Vehicle
     {
         public int Id { get; set; }
@@ -29,8 +41,8 @@ namespace Garage2._0.Models
         [RegNumValidator]
         public string RegNum { get; set; }
 
-        [Required]
-        public string Color { get; set; }
+        [EnumDataType(typeof(Colors))]
+        public Colors Color { get; set; }
 
         private DateTime? parkTime;
         [Required]

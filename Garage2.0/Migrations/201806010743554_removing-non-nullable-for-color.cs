@@ -3,16 +3,16 @@ namespace Garage2._0.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class stamptimedeleted : DbMigration
+    public partial class removingnonnullableforcolor : DbMigration
     {
         public override void Up()
         {
-            DropColumn("dbo.Vehicles", "Timestamp");
+            AlterColumn("dbo.Vehicles", "Color", c => c.Int(nullable: false));
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Vehicles", "Timestamp", c => c.DateTime(nullable: false));
+            AlterColumn("dbo.Vehicles", "Color", c => c.Int());
         }
     }
 }

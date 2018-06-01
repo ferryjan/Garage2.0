@@ -28,7 +28,7 @@ namespace Garage2._0.Controllers
             }
             else
             {
-                return View(db.Vehicles.Where(e => e.Color == search.ToLower() || search.ToLower() == null).ToList());
+                return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
             }
         }
 

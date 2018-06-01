@@ -7,13 +7,13 @@ namespace Garage2._0.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class stamptimedeleted : IMigrationMetadata
+    public sealed partial class removingnonnullableforcolor : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(stamptimedeleted));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(removingnonnullableforcolor));
         
         string IMigrationMetadata.Id
         {
-            get { return "201805311354379_stamptime-deleted"; }
+            get { return "201806010743554_removing-non-nullable-for-color"; }
         }
         
         string IMigrationMetadata.Source

@@ -152,29 +152,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805301329170_InitialCreate.cs" />
-    <Compile Include="Migrations\201805301329170_InitialCreate.Designer.cs">
-      <DependentUpon>201805301329170_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201806010738240_init.cs" />
+    <Compile Include="Migrations\201806010738240_init.Designer.cs">
+      <DependentUpon>201806010738240_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805301402310_Timestamp.cs" />
-    <Compile Include="Migrations\201805301402310_Timestamp.Designer.cs">
-      <DependentUpon>201805301402310_Timestamp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805310638121_a.cs" />
-    <Compile Include="Migrations\201805310638121_a.Designer.cs">
-      <DependentUpon>201805310638121_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805310655381_small-change.cs" />
-    <Compile Include="Migrations\201805310655381_small-change.Designer.cs">
-      <DependentUpon>201805310655381_small-change.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805311354379_stamptime-deleted.cs" />
-    <Compile Include="Migrations\201805311354379_stamptime-deleted.Designer.cs">
-      <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805311419446_DeleteTypeId.cs" />
-    <Compile Include="Migrations\201805311419446_DeleteTypeId.Designer.cs">
-      <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
+    <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.cs" />
+    <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.Designer.cs">
+      <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -241,23 +225,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805301329170_InitialCreate.resx">
-      <DependentUpon>201805301329170_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806010738240_init.resx">
+      <DependentUpon>201806010738240_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805301402310_Timestamp.resx">
-      <DependentUpon>201805301402310_Timestamp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805310638121_a.resx">
-      <DependentUpon>201805310638121_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805310655381_small-change.resx">
-      <DependentUpon>201805310655381_small-change.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311354379_stamptime-deleted.resx">
-      <DependentUpon>201805311354379_stamptime-deleted.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805311419446_DeleteTypeId.resx">
-      <DependentUpon>201805311419446_DeleteTypeId.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806010743554_removing-non-nullable-for-color.resx">
+      <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

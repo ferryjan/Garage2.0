@@ -11,8 +11,8 @@
 </p>
 
 @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get)) {
-    <b> Search Option: </b> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> @Html.RadioButton("option", "Color") <text> Color </text>
-    @Html.RadioButton("option", "VehicleType") <text> VehicleType </text>
+    <b> Search Option: </b> <br /> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> <br /> @Html.RadioButton("option", "Color") <text> Color </text> <br />
+    @Html.RadioButton("option", "VehicleType") <text> VehicleType </text> <br />
     @Html.TextBox("search") <input type="submit" name="submit" value="Search" />
 }
 
