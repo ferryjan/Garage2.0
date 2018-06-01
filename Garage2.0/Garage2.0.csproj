@@ -160,13 +160,16 @@
     <Compile Include="Migrations\201806010743554_removing-non-nullable-for-color.Designer.cs">
       <DependentUpon>201806010743554_removing-non-nullable-for-color.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806010847581_fixing-conflict.cs" />
-    <Compile Include="Migrations\201806010847581_fixing-conflict.Designer.cs">
-      <DependentUpon>201806010847581_fixing-conflict.cs</DependentUpon>
+    <Compile Include="Migrations\201806010819190_RenamedParkTime.cs" />
+    <Compile Include="Migrations\201806010819190_RenamedParkTime.Designer.cs">
+      <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806010932144_ColorToEnum.cs" />
+    <Compile Include="Migrations\201806010932144_ColorToEnum.Designer.cs">
+      <DependentUpon>201806010932144_ColorToEnum.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
-    <Compile Include="Models\ParkingReceipt.cs" />
     <Compile Include="Models\ReceiptViewModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -242,8 +245,8 @@
     <EmbeddedResource Include="Migrations\201806010819190_RenamedParkTime.resx">
       <DependentUpon>201806010819190_RenamedParkTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806010847581_fixing-conflict.resx">
-      <DependentUpon>201806010847581_fixing-conflict.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806010932144_ColorToEnum.resx">
+      <DependentUpon>201806010932144_ColorToEnum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
