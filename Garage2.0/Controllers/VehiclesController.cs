@@ -35,13 +35,13 @@ namespace Garage2._0.Controllers
                 }
                 else
                 {
-                    ViewBag.Msg = "There are no parking space for car/van/truck, however we have still space for the motorcycle. Welcome!";
+                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we have still space for the motorcycle. Welcome!";
                 }
             }
             else
             {
-                ViewBag.Msg = "Welcome! You can park your vehicle here. Car/Van: 1 parking space, 5 SEK/15min. Truck: 2 parking spaces, 10 SEK/15min." +
-                    " Motorcycle: 3 motorcycle can share one parking space, 5 SEK/15min";
+                ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
+                    "<br />Motorcycle: 3 motorcycle can share one parking space, 5 SEK/15min</h3>";
             }
             if (option == "RegNum") {
                 return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
