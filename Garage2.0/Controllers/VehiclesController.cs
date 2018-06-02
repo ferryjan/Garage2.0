@@ -27,6 +27,7 @@ namespace Garage2._0.Controllers
         public ActionResult Index(string option, string search) {
             ParkingSpace ps = new ParkingSpace(parkingCapacity);
             ViewBag.AvailableSpaces = ps.GetNumOfAvailableSpace();
+            ViewBag.Capacity = parkingCapacity;
             if (ViewBag.AvailableSpaces == 0)
             {
                 if (!ps.HasSpaceForMotorCycle())
