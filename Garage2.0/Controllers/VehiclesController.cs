@@ -27,6 +27,22 @@ namespace Garage2._0.Controllers
         public ActionResult Index(string option, string search) {
             ParkingSpace ps = new ParkingSpace(parkingCapacity);
             ViewBag.AvailableSpaces = ps.GetNumOfAvailableSpace();
+            if (ViewBag.AvailableSpaces == 0)
+            {
+                if (!ps.HasSpaceForMotorCycle())
+                {
+                    ViewBag.Msg = "There are no parking space available, please come later!";
+                }
+                else
+                {
+                    ViewBag.Msg = "There are no parking space for car/van/truck, however we have still space for the motorcycle. Welcome!";
+                }
+            }
+            else
+            {
+                ViewBag.Msg = "Welcome! You can park your vehicle here. Car/Van: 1 parking space, 5 SEK/15min. Truck: 2 parking spaces, 10 SEK/15min." +
+                    " Motorcycle: 3 motorcycle can share one parking space, 5 SEK/15min";
+            }
             if (option == "RegNum") {
                 return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
             } else if (option == "VehicleType") {

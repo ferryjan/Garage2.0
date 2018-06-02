@@ -53,6 +53,19 @@ namespace Garage2._0.Models
             return cap;
         }
 
+        public bool HasSpaceForMotorCycle()
+        {
+            for (int i = 0; i < Capacity; i++)
+            {
+                if (ps[i] > 0 && ps[i] < 3)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
         public void RemoveFromParkingSpace(Vehicle vehicle)
         {
             if (vehicle.VehicleType.ToString() == "Car" || vehicle.VehicleType.ToString() == "Van")
