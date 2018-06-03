@@ -14,7 +14,12 @@
         if (Model.ElementAt(i).VehicleType == Garage2._0.Models.VehicleTypes.Truck)
         {
             int.TryParse(parkingInfoList[i], out int index);
-            parkingInfoList[i] = parkingInfoList[i] + " & " + (index + 1);
+            parkingInfoList[i] = (index + 1) + " & " + (index + 2);
+        }
+        else
+        {
+            int.TryParse(parkingInfoList[i], out int index);
+            parkingInfoList[i] = (index + 1).ToString();
         }
     }
 }
