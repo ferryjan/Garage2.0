@@ -42,7 +42,7 @@ namespace Garage2._0.Controllers
             else
             {
                 ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
-                    "<br />Motorcycle: 3 motorcycle can share one parking space, 5 SEK/15min</h3>";
+                    "<br />Motorcycle: 3 motorcycles can share same parking space, 5 SEK/15min</h3>";
             }
             if (option == "RegNum") {
                 return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
