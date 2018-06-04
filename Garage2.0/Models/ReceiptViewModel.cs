@@ -46,14 +46,7 @@ namespace Garage2._0.Models
             CheckInTime = vehicle.CheckInTime;
             CheckOutTime = DateTime.Now;
             TimeParked = CheckOutTime - CheckInTime;
-            if (vehicle.VehicleType == VehicleTypes.Truck)
-            {
-                Price = 2 * VehicleHelpers.CalculateParkingPrice(TimeParked);
-            }
-            else
-            {
-                Price = VehicleHelpers.CalculateParkingPrice(TimeParked);
-            }
+            Price = VehicleHelpers.CalculateParkingPrice(TimeParked) * vehicle.ParkingSpaces.Count;
         }
     }
 }

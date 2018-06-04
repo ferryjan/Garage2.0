@@ -47,7 +47,7 @@ namespace Garage2._0.Models
             EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).First().CheckInTime;
             LatestCheckInTime = vehicles.OrderByDescending(v => v.CheckInTime).First().CheckInTime;
             foreach (Vehicle vehicle in vehicles) {
-                TotalPrice += VehicleHelpers.CalculateParkingPrice(vehicle.CheckInTime, DateTime.Now);
+                TotalPrice += VehicleHelpers.CalculateParkingPrice(vehicle.CheckInTime, DateTime.Now) * vehicle.ParkingSpaces.Count;
             }
         }
     }
