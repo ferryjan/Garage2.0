@@ -4,26 +4,6 @@
     ViewBag.Title = "Garage 2.0 - Homepage";
 }
 
-@{
-    var vehicleList = Model;
-    var parkingInfo = Model.Select(v => v.ParkingSpaceNum).ToList();
-    var parkingInfoList = parkingInfo.ConvertAll<string>(x => x.ToString());
-
-    for (int i = 0; i < Model.Count(); i++)
-    {
-        if (Model.ElementAt(i).VehicleType == Garage2._0.Models.VehicleTypes.Truck)
-        {
-            int.TryParse(parkingInfoList[i], out int index);
-            parkingInfoList[i] = (index + 1) + " & " + (index + 2);
-        }
-        else
-        {
-            int.TryParse(parkingInfoList[i], out int index);
-            parkingInfoList[i] = (index + 1).ToString();
-        }
-    }
-}
-
 <br />
 
 <div class="well">
@@ -93,7 +73,7 @@
                         @Html.DisplayFor(modelItem => item.CheckInTime)
                     </td>
                     <td>
-                        @parkingInfoList[i]
+                        @Html.DisplayFor(modelItem => item.ParkingSpaceNum)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

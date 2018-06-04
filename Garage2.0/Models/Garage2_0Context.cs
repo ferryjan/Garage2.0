@@ -20,5 +20,6 @@ namespace Garage2._0.Models
         }
 
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<ParkingSpace> ParkingSpaces { get; set; }
     }
 }

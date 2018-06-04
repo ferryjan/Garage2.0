@@ -57,6 +57,12 @@ namespace Garage2._0.Models
         public string Model { get; set; }
 
         [Display(Name = "Parking Position")]
-        public int ParkingSpaceNum { get; set; }
+        public string ParkingSpaceNum => String.Join(" & ", ParkingSpaces.Select(p => p.Number.ToString()).ToArray());
+
+        public virtual ICollection<ParkingSpace> ParkingSpaces { get; set; }
+
+        public Vehicle() {
+            ParkingSpaces = new HashSet<ParkingSpace>();
+        }
     }
 }

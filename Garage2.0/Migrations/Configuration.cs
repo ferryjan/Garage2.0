@@ -4,9 +4,10 @@ namespace Garage2._0.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Controllers;
     using Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Garage2._0.Models.Garage2_0Context>
+    internal sealed class Configuration : DbMigrationsConfiguration<Garage2_0Context>
     {
         public Configuration()
         {
@@ -20,6 +21,9 @@ namespace Garage2._0.Migrations
             //    new Vehicle { VehicleType = VehicleTypes.Motorcycle, Color = Colors.Black, RegNum = "XYZ789", Model = "Yamaha", NumOfTires = 2, CheckInTime = DateTime.Now.AddDays(-1) },
             //    new Vehicle { VehicleType = VehicleTypes.Truck, Color = Colors.Blue, RegNum = "AAA111", Model = "Scania", NumOfTires = 8, CheckInTime = DateTime.Now.AddDays(-2) }
             //);
+            for (int i = 1; i <= VehiclesController.ParkingCapacity; i++) {
+                context.ParkingSpaces.AddOrUpdate(p => p.Number, new ParkingSpace { Number = i });
+            }
         }
     }
 }

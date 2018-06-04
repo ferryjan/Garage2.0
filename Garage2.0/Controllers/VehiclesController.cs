@@ -20,19 +20,18 @@ namespace Garage2._0.Controllers
          * 
          */
 
-        private readonly int parkingCapacity = 10;
+        public static readonly int ParkingCapacity = 10;
         private Garage2_0Context db = new Garage2_0Context();
 
         // GET: Vehicles
         public ActionResult Index(string option, string search) {
-            ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            ViewBag.AvailableSpaces = ps.GetNumOfAvailableSpace();
-            ViewBag.Capacity = parkingCapacity;
+            ViewBag.AvailableSpaces = _AvailableSpacesCount();
+            ViewBag.Capacity = ParkingCapacity;
             if (ViewBag.AvailableSpaces == 0) {
-                if (!ps.HasSpaceForMotorCycle()) {
-                    ViewBag.Msg = "There are no parking space available, please come later!";
+                if (!_HasSpaceForMotorCycle()) {
+                    ViewBag.Msg = "There are no parking spaces available, please come later!";
                 } else {
-                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we have still space for the motorcycle. Welcome!";
+                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we still have space for motorcycle. Welcome!";
                 }
             } else {
                 ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
@@ -47,6 +46,11 @@ namespace Garage2._0.Controllers
             }
         }
 
+        private bool _HasSpaceForMotorCycle() => db.ParkingSpaces.Count(p => (p.Vehicles.Count == 0 || (p.Vehicles.Count < 3 && p.Vehicles.FirstOrDefault().VehicleType == VehicleTypes.Motorcycle))) > 0;
+
+        private int _AvailableSpacesCount() => db.ParkingSpaces.Where(p => p.Vehicles.Count == 0).Count();
+
+
         // GET: Vehicles/Details/5
         public ActionResult Details(int? id) {
             if (id == null) {
@@ -56,11 +60,7 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType == VehicleTypes.Truck) {
-                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
-            } else {
-                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
-            }
+            ViewBag.ParkingPosition = String.Join(" and ", vehicle.ParkingSpaces.Select(p => p.Number.ToString()).ToArray());
             return View(vehicle);
         }
 
@@ -74,15 +74,12 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,VehicleType,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
+        public ActionResult Create([Bind(Include = "VehicleType,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
             vehicle.CheckInTime = DateTime.Now;
-            ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            int index = ps.AssignParkingSpace(vehicle);
-
+            bool parked = _AssignParkingSpace(vehicle);
             if (ModelState.IsValid) {
-                if (index != -1) {
+                if (parked) {
                     ViewBag.isFull = "";
-                    vehicle.ParkingSpaceNum = index;
                     db.Vehicles.Add(vehicle);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -91,6 +88,28 @@ namespace Garage2._0.Controllers
                 }
             }
             return View(vehicle);
+        }
+
+        private bool _AssignParkingSpace(Vehicle vehicle) {
+            foreach (ParkingSpace ps in db.ParkingSpaces.OrderBy(p => p.Number)) {
+                if (vehicle.VehicleType == VehicleTypes.Motorcycle && (ps.Vehicles.Count == 0 || (ps.Vehicles.Count < 3 && ps.Vehicles.FirstOrDefault()?.VehicleType == VehicleTypes.Motorcycle))) {
+                    vehicle.ParkingSpaces.Add(ps);
+                    return true;
+                } else if (ps.Vehicles.Count == 0) {
+                    if (vehicle.VehicleType == VehicleTypes.Truck) {
+                        ParkingSpace nextSpace = db.ParkingSpaces.Where(p => p.Number == ps.Number + 1 && p.Vehicles.Count == 0).SingleOrDefault();
+                        if (nextSpace != null) {
+                            vehicle.ParkingSpaces.Add(ps);
+                            vehicle.ParkingSpaces.Add(nextSpace);
+                            return true;
+                        }
+                    } else {
+                        vehicle.ParkingSpaces.Add(ps);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         // GET: Vehicles/Edit/5
@@ -105,19 +124,37 @@ namespace Garage2._0.Controllers
             return View(vehicle);
         }
 
-        // POST: Vehicles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
-            if (ModelState.IsValid) {
-                db.Entry(vehicle).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+        public ActionResult EditPost(int? id) {
+            if (id == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var vehicle = db.Vehicles.Find(id);
+            if (TryUpdateModel(vehicle, "", new string[] { "RegNum", "Color", "NumOfTires", "Model" })) {
+                try {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                } catch (DataException /* dex */) {
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
             }
             return View(vehicle);
         }
+
+        // POST: Vehicles/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Edit([Bind(Include = "Id,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
+        //    if (ModelState.IsValid) {
+        //        db.Entry(vehicle).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(vehicle);
+        //}
 
         // GET: Vehicles/Delete/5
         [HttpGet]
@@ -129,11 +166,7 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType == VehicleTypes.Truck) {
-                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
-            } else {
-                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
-            }
+            ViewBag.ParkingPosition = String.Join(" and ", vehicle.ParkingSpaces.Select(p => p.Number.ToString()).ToArray());
             return View(vehicle);
         }
 
@@ -149,8 +182,6 @@ namespace Garage2._0.Controllers
         // GET: Vehicles/Receipt/5
         public ActionResult Receipt(int id) {
             Vehicle vehicle = db.Vehicles.Find(id);
-            ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            ps.RemoveFromParkingSpace(vehicle);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
 
