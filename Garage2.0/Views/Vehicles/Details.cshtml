@@ -4,72 +4,76 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<br />
 
-<div>
-    <h4>Vehicle</h4>
-    <hr />
-    <dl class="dl-horizontal">
+<div class="well">
+    <h2>Details</h2>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VehicleType)
-        </dt>
+    <div>
+        <h4>Vehicle</h4>
+        <hr />
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.VehicleType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.VehicleType)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RegNum)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VehicleType)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegNum)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RegNum)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RegNum)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CheckInTime)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CheckInTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CheckInTime)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumOfTires)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CheckInTime)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NumOfTires)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumOfTires)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumOfTires)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkingSpaceNum)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
 
-        <dd>
-            @ViewBag.ParkingPosition
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ParkingSpaceNum)
+            </dt>
 
-    </dl>
+            <dd>
+                @ViewBag.ParkingPosition
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

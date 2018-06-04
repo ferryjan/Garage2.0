@@ -4,61 +4,65 @@
     ViewBag.Title = "Statistics";
 }
 
-<h2>Statistics</h2>
+<br />
 
-<div>
-    <dl class="dl-horizontal statistics">
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfVehicles)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfVehicles)
-        </dd>
+<div class="well">
+    <h2>Statistics</h2>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfVehiclesPerColor)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfVehiclesPerColor)
-        </dd>
+    <div>
+        <dl class="dl-horizontal statistics">
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehicles)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfVehicles)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfVehiclesPerType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfVehiclesPerType)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehiclesPerColor)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfVehiclesPerColor)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOfWheels)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NumberOfWheels)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehiclesPerType)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfVehiclesPerType)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EarliestCheckInTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EarliestCheckInTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfWheels)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfWheels)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LatestCheckInTime)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.LatestCheckInTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EarliestCheckInTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EarliestCheckInTime)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TotalPrice)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.LatestCheckInTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LatestCheckInTime)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
