@@ -17,7 +17,6 @@ namespace Garage2._0.Controllers
          *         Van: 1 parking space
          *         Car: 1 parking space
          *  Motorcycle: 1/3 parking space
-         * 
          */
 
         public static readonly int ParkingCapacity = 10;
@@ -124,6 +123,7 @@ namespace Garage2._0.Controllers
             return View(vehicle);
         }
 
+        // POST: Vehicles/Edit/5
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         public ActionResult EditPost(int? id) {
@@ -141,20 +141,6 @@ namespace Garage2._0.Controllers
             }
             return View(vehicle);
         }
-
-        // POST: Vehicles/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
-        //    if (ModelState.IsValid) {
-        //        db.Entry(vehicle).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(vehicle);
-        //}
 
         // GET: Vehicles/Delete/5
         [HttpGet]
