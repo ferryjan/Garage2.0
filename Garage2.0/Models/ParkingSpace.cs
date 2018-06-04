@@ -11,124 +11,78 @@ namespace Garage2._0.Models
         public int Capacity { get; set; }
         public Garage2_0Context db;
 
-        public ParkingSpace(int capacity)
-        {
+        public ParkingSpace(int capacity) {
             db = new Garage2_0Context();
             ps = new int[capacity];
             GetList();
             Capacity = capacity;
         }
 
-        public void GetList()
-        {
+        public void GetList() {
             Array.Clear(ps, 0, ps.Length);
-            foreach (var item in db.Vehicles)
-            {
-                if (item.VehicleType.ToString() == "Car" || item.VehicleType.ToString() == "Van")
-                {
-                    ps[item.ParkingSpaceNum] = 3;
-                }
-                if (item.VehicleType.ToString() == "Truck")
-                {
+            foreach (var item in db.Vehicles) {
+                if (item.VehicleType == VehicleTypes.Truck) {
                     ps[item.ParkingSpaceNum] = 3;
                     ps[item.ParkingSpaceNum + 1] = 3;
-                }
-                if (item.VehicleType.ToString() == "Motorcycle")
-                {
+                } else if (item.VehicleType == VehicleTypes.Motorcycle) {
                     ps[item.ParkingSpaceNum] += 1;
+                } else {
+                    ps[item.ParkingSpaceNum] = 3;
                 }
             }
         }
 
-        public int GetNumOfAvailableSpace()
-        {
+        public int GetNumOfAvailableSpace() {
             var cap = Capacity;
-            foreach (var item in ps)
-            {
-                if (item != 0)
-                {
+            foreach (var item in ps) {
+                if (item != 0) {
                     cap -= 1;
                 }
             }
             return cap;
         }
 
-        public bool HasSpaceForMotorCycle()
-        {
-            for (int i = 0; i < Capacity; i++)
-            {
-                if (ps[i] > 0 && ps[i] < 3)
-                {
+        public bool HasSpaceForMotorCycle() {
+            for (int i = 0; i < Capacity; i++) {
+                if (ps[i] < 3) {
                     return true;
                 }
             }
             return false;
-
         }
 
-        public void RemoveFromParkingSpace(Vehicle vehicle)
-        {
-            if (vehicle.VehicleType.ToString() == "Car" || vehicle.VehicleType.ToString() == "Van")
-            {
+        public void RemoveFromParkingSpace(Vehicle vehicle) {
+            if (vehicle.VehicleType == VehicleTypes.Truck) {
                 ps[vehicle.ParkingSpaceNum] = 0;
-            }
-            if (vehicle.VehicleType.ToString() == "Truck")
-            {
-                ps[vehicle.ParkingSpaceNum] = 0;
-                ps[vehicle.ParkingSpaceNum+1] = 0;
-            }
-            if (vehicle.VehicleType.ToString() == "Motorcycle")
-            {
+                ps[vehicle.ParkingSpaceNum + 1] = 0;
+            } else if (vehicle.VehicleType == VehicleTypes.Motorcycle) {
                 ps[vehicle.ParkingSpaceNum] = ps[vehicle.ParkingSpaceNum] - 1;
+            } else {
+                ps[vehicle.ParkingSpaceNum] = 0;
             }
         }
 
-        public int AssignParkingSpace(Vehicle vehicle)
-        {
-            if (vehicle.VehicleType.ToString() == "Car" || vehicle.VehicleType.ToString() == "Van")
-            {
-                for (int i = 0; i < Capacity; i++)
-                {
-                    if (ps[i] == 0)
-                    {
+        public int AssignParkingSpace(Vehicle vehicle) {
+            if (vehicle.VehicleType == VehicleTypes.Motorcycle) {
+                for (int i = 0; i < Capacity; i++) {
+                    if (ps[i] < 3) {
+                        ps[i] += 1;
+                        return i;
+                    }
+                }
+            } else if (vehicle.VehicleType == VehicleTypes.Truck) {
+                for (int i = 0; i < Capacity - 1; i++) {
+                    if (ps[i] == 0 && ps[i + 1] == 0) {
+                        ps[i] = 3;
+                        ps[i + 1] = 3;
+                        return i;
+                    }
+                }
+            } else {
+                for (int i = 0; i < Capacity; i++) {
+                    if (ps[i] == 0) {
                         ps[i] = 3;
                         return i;
-                    }
-                }
-            }
-
-            if (vehicle.VehicleType.ToString() == "Motorcycle")
-            {
-                for (int i = 0; i < Capacity; i++)
-                {
-                    if (ps[i] > 0 && ps[i] < 3)
-                    {
-                        ps[i] += 1;
-                        return i;
-                    }
-                }
-                for (int i = 0; i < Capacity; i++)
-                {
-                    if (ps[i] == 0)
-                    {
-                        ps[i] += 1;
-                        return i;
-                    }
-                }
-            }
-
-            if (vehicle.VehicleType.ToString() == "Truck")
-            {
-                for (int i = 0; i < Capacity - 1; i++)
-                {
-                    if (ps[i] == 0)
-                    {
-                        if (ps[i + 1] == 0)
-                        {
-                            ps[i] = 3;
-                            ps[i + 1] = 3;
-                            return i;
-                        }
                     }
                 }
             }
