@@ -77,7 +77,7 @@ namespace Garage2._0.Controllers
         public ActionResult Create([Bind(Include = "Id,VehicleType,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
             vehicle.CheckInTime = DateTime.Now;
             ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            var index = ps.AssignParkingSpace(vehicle);
+            int index = ps.AssignParkingSpace(vehicle);
 
             if (ModelState.IsValid) {
                 if (index != -1) {
@@ -110,7 +110,7 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,VehicleType,RegNum,Color,CheckInTime,NumOfTires,Model")] Vehicle vehicle) {
+        public ActionResult Edit([Bind(Include = "Id,RegNum,Color,NumOfTires,Model")] Vehicle vehicle) {
             if (ModelState.IsValid) {
                 db.Entry(vehicle).State = EntityState.Modified;
                 db.SaveChanges();

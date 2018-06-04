@@ -56,7 +56,7 @@ namespace Garage2._0.Models
                 ps[vehicle.ParkingSpaceNum] = 0;
                 ps[vehicle.ParkingSpaceNum + 1] = 0;
             } else if (vehicle.VehicleType == VehicleTypes.Motorcycle) {
-                ps[vehicle.ParkingSpaceNum] = ps[vehicle.ParkingSpaceNum] - 1;
+                ps[vehicle.ParkingSpaceNum] -= 1;
             } else {
                 ps[vehicle.ParkingSpaceNum] = 0;
             }
