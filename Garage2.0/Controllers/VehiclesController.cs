@@ -20,17 +20,17 @@ namespace Garage2._0.Controllers
          * 
          */
 
-        public int parkingCapacity = 10;
+        public static int parkingCapacity = 10;
         private Garage2_0Context db = new Garage2_0Context();
+        public ParkingSpace  parkspace = new ParkingSpace(parkingCapacity);
 
         // GET: Vehicles
         public ActionResult Index(string option, string search) {
-            ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            ViewBag.AvailableSpaces = ps.GetNumOfAvailableSpace();
+            ViewBag.AvailableSpaces = parkspace.GetNumOfAvailableSpace();
             ViewBag.Capacity = parkingCapacity;
             if (ViewBag.AvailableSpaces == 0)
             {
-                if (!ps.HasSpaceForMotorCycle())
+                if (!parkspace.HasSpaceForMotorCycle())
                 {
                     ViewBag.Msg = "There are no parking space available, please come later!";
                 }
@@ -76,6 +76,12 @@ namespace Garage2._0.Controllers
         // GET: Vehicles/Create
         public ActionResult Create() {
             return View();
+        }
+
+        public ActionResult AdvancedView()
+        {
+            var model = new AdvancedViewModel(parkspace);
+            return View(model);
         }
 
         // POST: Vehicles/Create

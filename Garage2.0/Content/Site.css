@@ -59,3 +59,29 @@ table.sortable .ordered {
     display: inline-block;
     width: 100px;
 }
+
+.parkheader {
+    min-width: 250px;
+}
+.rotated{
+    transform: rotate(90deg);
+}
+.advancedView, .innerTable {
+    text-align: center;
+}
+.advancedView {
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
+}
+    .advancedView > tr {
+        border-left: 5px solid white;
+        border-right: 5px solid white;
+    }
+.occupiedSpace, .unoccupiedSpace {
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    height: 250px;
+}
+.carIcon{
+    width:60%;
+}
