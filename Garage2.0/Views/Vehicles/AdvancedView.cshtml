@@ -1,6 +1,6 @@
 ﻿@model Garage2._0.Models.AdvancedViewModel
 @{
-    ViewBag.Title = "AdvancedView";
+    ViewBag.Title = "Garage Overview";
 }
 
 <h2>AdvancedView</h2>
@@ -8,12 +8,11 @@
 @{
     int parkspot = 1;
     int index = 0;
-    int capacity = Model.capacity;
-    <p>Capacity: @Html.DisplayFor(model => model.rows)</p>
+    //int capacity = Model.capacity;
     <table class="advancedView">
-        @for (
+        @for (int a = 1; a <= Model.rows; a++)
 
-            int a = 1; a <= Model.rows; a++)
+
         {
             <tr>
                 @for (int b = 1; b <= 5; b++)
@@ -90,7 +89,7 @@
                         <td class="unoccupiedSpace">UNOCCUPIED</td>
                     }
                     index++;
-                    capacity--;
+                    //capacity--;
                 }
             </tr>
 
