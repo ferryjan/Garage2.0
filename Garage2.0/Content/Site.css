@@ -65,8 +65,8 @@ table.sortable .ordered {
 
 /* Advanced Overview CSS -Robert D. */
 .parkheader {
-    min-width: 250px;
     padding:7px;
+    width:20%;
 }
 .rotated{
     transform: rotate(90deg);
@@ -76,7 +76,8 @@ table.sortable .ordered {
 }
 .advancedView {
     color: ghostwhite;
-    background-color: #000000a8;
+    background-color: #000000de;
+    width: 100%;
 }
 
 .occupiedSpace, .unoccupiedSpace {
