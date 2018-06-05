@@ -22,6 +22,13 @@
             parkingInfoList[i] = (index + 1).ToString();
         }
     }
+
+    var checkinList = Model.Select(v => v.CheckInTime).ToList();
+    List<TimeSpan> parkTimeList = new List<TimeSpan>();
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        parkTimeList.Add(DateTime.Now - checkinList[i]);
+    }
 }
 
 <br />
@@ -63,6 +70,9 @@
                 @Html.DisplayNameFor(model => model.CheckInTime)
             </th>
             <th>
+                Total Time Parked
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ParkingSpaceNum)
             </th>
             <th></th>
@@ -79,28 +89,31 @@
             int i = 0;
             foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VehicleType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RegNum)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Color)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CheckInTime)
-                    </td>
-                    <td>
-                        @parkingInfoList[i]
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Check Out Vehicle", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckInTime)
+                </td>
+                <td>
+                    @parkTimeList[i].Days Day @parkTimeList[i].Hours Hour @parkTimeList[i].Minutes Min
+                </td>
+                <td>
+                    @parkingInfoList[i]
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Check Out Vehicle", "Delete", new { id = item.Id })
+                </td>
+            </tr>
                 i++;
             }
         }
