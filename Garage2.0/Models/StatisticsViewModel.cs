@@ -24,10 +24,10 @@ namespace Garage2._0.Models
         public Dictionary<Enum, int> NumberOfVehiclesPerType { get; }
 
         [Display(Name = "Earliest check-in time")]
-        public DateTime EarliestCheckInTime { get; }
+        public DateTime? EarliestCheckInTime { get; }
 
         [Display(Name = "Most recent check-in time")]
-        public DateTime LatestCheckInTime { get; }
+        public DateTime? LatestCheckInTime { get; }
 
         [UIHint("Currency")]
         [Display(Name = "Total parking price (5 SEK / 15 min)")]
@@ -44,8 +44,8 @@ namespace Garage2._0.Models
             foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes))) {
                 NumberOfVehiclesPerType.Add(type, vehicles.Where(v => v.VehicleType == type).Count());
             }
-            EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).First().CheckInTime;
-            LatestCheckInTime = vehicles.OrderByDescending(v => v.CheckInTime).First().CheckInTime;
+            EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
+            LatestCheckInTime = vehicles.OrderByDescending(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
             foreach (Vehicle vehicle in vehicles) {
                 TotalPrice += VehicleHelpers.CalculateParkingPrice(vehicle.CheckInTime, DateTime.Now);
             }
