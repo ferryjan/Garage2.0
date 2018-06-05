@@ -7,54 +7,23 @@ namespace Garage2._0.Models
 {
     public class AdvancedViewModel
     {
-        public int rows { get; }
-        public int[] array { get; }
-        public int capacity { get; }
-        public Garage2_0Context db;
-        public AdvancedViewModel(ParkingSpace park)
-        {
-            capacity = park.Capacity;
-            rows = capacity / 5;
-            array = park.ps;
-            db = park.db;
+        public VehicleTypes?[] VehicleTypes { get; }
+        public int Columns => 5;
+        public int Rows { get; }
+        private IEnumerable<ParkingSpace> _ParkingSpaces { get; }
 
-            if(capacity%5 != 0)
-            {
-                rows++;
+        public AdvancedViewModel(IEnumerable<ParkingSpace> parkingSpaces) {
+            _ParkingSpaces = parkingSpaces;
+            int capacity = _ParkingSpaces.Count();
+            VehicleTypes = new VehicleTypes?[capacity + 1];
+            foreach (ParkingSpace ps in _ParkingSpaces) {
+                VehicleTypes[ps.Number] = ps.Vehicles.FirstOrDefault()?.VehicleType;
             }
+            Rows = (int)Math.Ceiling((decimal)capacity / Columns);
         }
 
-        public int GetType(int index)
-        {
-            var vehicle = db.Vehicles.Where(a => a.ParkingSpaceNum == (index)).FirstOrDefault();
-            if (vehicle != null)
-            {
-                if (vehicle.VehicleType.ToString() == "Car")
-                    return 1;
-                if (vehicle.VehicleType.ToString() == "Van")
-                    return 2;
-                if (vehicle.VehicleType.ToString() == "Truck")
-                    return 3;
-                if (vehicle.VehicleType.ToString() == "Motorcycle")
-                    return 4;
-                else
-                    return 0;
-            }
-            else
-                return 0;
-        }
-
-        public int CheckAdjacentBikes(int space)
-        {
-            int result = 0;
-
-            var vehicles = db.Vehicles.Where(e => e.ParkingSpaceNum == space);
-
-            foreach (var item in vehicles)
-            {
-                result++;
-            }
-            return result;
+        public int CheckAdjacentBikes(int parkingSpaceNumber) {
+            return _ParkingSpaces.Single(p => p.Number == parkingSpaceNumber).Vehicles.Count;
         }
     }
 }

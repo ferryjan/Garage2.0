@@ -33,7 +33,7 @@ namespace Garage2._0.Models
         [Display(Name = "Total parking price (5 SEK / 15 min)")]
         public int TotalPrice { get; }
 
-        public StatisticsViewModel(List<Vehicle> vehicles) {
+        public StatisticsViewModel(IEnumerable<Vehicle> vehicles) {
             NumberOfVehicles = vehicles.Count();
             NumberOfWheels = vehicles.Sum(v => v.NumOfTires);
             NumberOfVehiclesPerColor = new Dictionary<Enum, int>();

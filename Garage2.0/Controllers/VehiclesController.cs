@@ -21,7 +21,6 @@ namespace Garage2._0.Controllers
 
         public static readonly int ParkingCapacity = 10;
         private Garage2_0Context db = new Garage2_0Context();
-        public ParkingSpace  parkspace = new ParkingSpace(parkingCapacity);
 
         // GET: Vehicles
         public ActionResult Index(string option, string search) {
@@ -69,9 +68,9 @@ namespace Garage2._0.Controllers
             return View();
         }
 
-        public ActionResult AdvancedView()
-        {
-            var model = new AdvancedViewModel(parkspace);
+        public ActionResult AdvancedView() {
+            var ps = db.ParkingSpaces.ToArray();
+            var model = new AdvancedViewModel(ps);
             return View(model);
         }
 

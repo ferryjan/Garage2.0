@@ -157,10 +157,6 @@
     <Compile Include="Migrations\201806050823025_init.Designer.cs">
       <DependentUpon>201806050823025_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806041013154_advanced.cs" />
-    <Compile Include="Migrations\201806041013154_advanced.Designer.cs">
-      <DependentUpon>201806041013154_advanced.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdvancedViewModel.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -241,9 +237,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806050823025_init.resx">
       <DependentUpon>201806050823025_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806041013154_advanced.resx">
-      <DependentUpon>201806041013154_advanced.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

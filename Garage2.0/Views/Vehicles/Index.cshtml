@@ -15,8 +15,7 @@
     @Html.Raw(ViewBag.Msg)
 
 
-    @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get))
-    {
+    @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get)) {
         <b> Search Option: </b> <br /> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> <br /> @Html.RadioButton("option", "Color") <text> Color </text> <br />
         @Html.RadioButton("option", "VehicleType") <text> VehicleType </text> <br />
         @Html.TextBox("search") <input type="submit" name="submit" value="Search" class="btn btn-info" />
@@ -48,17 +47,13 @@
             <th></th>
         </tr>
 
-        @if (Model.Count() == 0)
-        {
+        @if (Model.Count() == 0) {
             <tr>
                 <td colspan="7"> <b>Records not found</b> </td>
             </tr>
-        }
-        else
-        {
+        } else {
             int i = 0;
-            foreach (var item in Model)
-            {
+            foreach (var item in Model) {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.VehicleType)
