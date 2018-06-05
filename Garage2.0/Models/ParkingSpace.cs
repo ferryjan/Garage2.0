@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace Garage2._0.Models
 {
     public class ParkingSpace
     {
-        private int[] ps;
+        public int[] ps;
         public int Capacity { get; set; }
         public Garage2_0Context db;
 
@@ -39,6 +40,7 @@ namespace Garage2._0.Models
                 }
             }
         }
+
 
         public int GetNumOfAvailableSpace()
         {
