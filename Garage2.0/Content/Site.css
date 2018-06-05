@@ -66,6 +66,7 @@ table.sortable .ordered {
 /* Advanced Overview CSS -Robert D. */
 .parkheader {
     min-width: 250px;
+    padding:7px;
 }
 .rotated{
     transform: rotate(90deg);
@@ -74,19 +75,20 @@ table.sortable .ordered {
     text-align: center;
 }
 .advancedView {
-    border-top: 5px solid white;
-    border-bottom: 5px solid white;
     color: ghostwhite;
     background-color: #000000a8;
 }
-.advancedView > tbody> tr {
-        border: 5px solid white;
 
-    }
 .occupiedSpace, .unoccupiedSpace {
     border-left: 5px solid white;
     border-right: 5px solid white;
     height: 250px;
+}
+.unoccupiedSpace {
+    color: greenyellow;
+}
+.innerTable {
+    color: greenyellow;
 }
 .carIcon{
     width:60%;
