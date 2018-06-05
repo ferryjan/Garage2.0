@@ -15,7 +15,7 @@ namespace Garage2._0.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public Garage2_0Context() : base("name=Garage2_0Context")
+        public Garage2_0Context() : base("name=Garage2_0Context_MtM")
         {
         }
 
