@@ -58,7 +58,38 @@ table.sortable .ordered {
     display: inline-block;
     width: 100px;
 }
-
 .well {
     background-color: rgba(252, 243, 120, 0.6);
+}
+
+
+/* Advanced Overview CSS -Robert D. */
+.parkheader {
+    min-width: 250px;
+    padding:7px;
+}
+.rotated{
+    transform: rotate(90deg);
+}
+.advancedView, .innerTable {
+    text-align: center;
+}
+.advancedView {
+    color: ghostwhite;
+    background-color: #000000a8;
+}
+
+.occupiedSpace, .unoccupiedSpace {
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    height: 250px;
+}
+.unoccupiedSpace {
+    color: greenyellow;
+}
+.innerTable {
+    color: greenyellow;
+}
+.carIcon{
+    width:60%;
 }
