@@ -153,9 +153,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\VehicleHelpers.cs" />
-    <Compile Include="Migrations\201806040626146_changes.cs" />
-    <Compile Include="Migrations\201806040626146_changes.Designer.cs">
-      <DependentUpon>201806040626146_changes.cs</DependentUpon>
+    <Compile Include="Migrations\201806040742102_init.cs" />
+    <Compile Include="Migrations\201806040742102_init.Designer.cs">
+      <DependentUpon>201806040742102_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201806041013154_advanced.cs" />
     <Compile Include="Migrations\201806041013154_advanced.Designer.cs">
@@ -239,8 +239,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806040626146_changes.resx">
-      <DependentUpon>201806040626146_changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806040742102_init.resx">
+      <DependentUpon>201806040742102_init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806041013154_advanced.resx">
       <DependentUpon>201806041013154_advanced.cs</DependentUpon>

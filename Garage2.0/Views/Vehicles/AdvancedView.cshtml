@@ -1,19 +1,22 @@
 ﻿@model Garage2._0.Models.AdvancedViewModel
 @{
-    ViewBag.Title = "AdvancedView";
+    ViewBag.Title = "Garage Overview";
 }
 
-<h2>AdvancedView</h2>
 
 @{
     int parkspot = 1;
     int index = 0;
-    int capacity = Model.capacity;
-    <p>Capacity: @Html.DisplayFor(model => model.rows)</p>
-    <table class="advancedView">
-        @for (
+    //int capacity = Model.capacity;
 
-            int a = 1; a <= Model.rows; a++)
+    <br />
+
+<div class="well">
+    <h2>@ViewBag.Title</h2>
+    <table class="advancedView">
+        @for (int a = 1; a <= Model.rows; a++)
+
+
         {
             <tr>
                 @for (int b = 1; b <= 5; b++)
@@ -35,7 +38,7 @@
                         {
                             case 1:
                                 {
-                                    <td class="occupiedSpace rotated"><img src="~/Content/MichelliRoadster-GTA2.png" class="carIcon"/></td>
+                                    <td class="occupiedSpace rotated"><img src="~/Content/MichelliRoadster-GTA2.png" class="carIcon" /></td>
                                     break;
                                 }
                             case 2:
@@ -61,19 +64,11 @@
                                                     {
                                                         <img src="~/Content/top-down-bike-racing-monsterbraingames.png" class="carIcon" />
                                                     }
-                                                    else
-                                                    {
-                                                        <span>UNOCCUPIED</span>
-                                                    }
                                                 </td>
                                                 <td>
                                                     @if (Model.CheckAdjacentBikes(index) > 2)
                                                     {
-                                                    <img src="~/Content/top-down-bike-racing-monsterbraingames.png" class="carIcon" />
-                                                    }
-                                                    else
-                                                    {
-                                                        <span>UNOCCUPIED</span>
+                                                        <img src="~/Content/top-down-bike-racing-monsterbraingames.png" class="carIcon" />
                                                     }
                                                 </td>
                                             </tr>
@@ -90,13 +85,14 @@
                         <td class="unoccupiedSpace">UNOCCUPIED</td>
                     }
                     index++;
-                    capacity--;
+                    //capacity--;
                 }
             </tr>
 
         }
 
     </table>
+</div>
 
 }
 
