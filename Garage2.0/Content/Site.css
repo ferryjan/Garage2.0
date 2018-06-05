@@ -58,6 +58,9 @@ table.sortable .ordered {
     display: inline-block;
     width: 100px;
 }
+.well {
+    background-color: rgba(252, 243, 120, 0.6);
+}
 
 
 /* Advanced Overview CSS -Robert D. */
