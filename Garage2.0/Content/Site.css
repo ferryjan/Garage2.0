@@ -91,6 +91,7 @@ table.sortable .ordered {
 .innerTable {
     color: greenyellow;
 }
-.carIcon{
-    width:60%;
+.carIcon {
+    max-height: 250px;
+    max-width: 80%;
 }
