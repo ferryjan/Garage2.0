@@ -49,9 +49,13 @@ namespace Garage2._0.Models
         [Display(Name = "Parking Position")]
         public int ParkingSpaceNum { get; set; }
 
+        [Display(Name = "Vehicle Type")]
         public int TypeId { get; set; }
         virtual public VehicleType VehicleType { get; set; }
 
+        [Display(Name = "Customer ID")]
+        [Required]
+        [MemberIdValidator]
         public int MemberId { get; set; }
         virtual public Member Member { get; set; }
     }

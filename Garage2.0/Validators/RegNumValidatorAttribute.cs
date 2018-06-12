@@ -25,5 +25,6 @@ namespace Garage2._0.Validators
                 return new ValidationResult("Invalid input");
             }
         }
+
     }
 }
