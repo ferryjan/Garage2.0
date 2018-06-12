@@ -16,7 +16,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Member.Name)
+                <span>Owner</span>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VehicleType.Type)
@@ -25,19 +25,7 @@
                 @Html.DisplayNameFor(model => model.RegNum)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Color)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CheckInTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumOfTires)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkingSpaceNum)
             </th>
             <th></th>
         </tr>
@@ -55,24 +43,12 @@
                     @Html.DisplayFor(modelItem => item.RegNum)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Color)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.CheckInTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumOfTires)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Model)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkingSpaceNum)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Check Out", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

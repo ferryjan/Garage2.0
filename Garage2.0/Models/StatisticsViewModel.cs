@@ -19,9 +19,9 @@ namespace Garage2._0.Models
         [Display(Name = "Number of vehicles per color")]
         public Dictionary<Enum, int> NumberOfVehiclesPerColor { get; }
 
-        [UIHint("EnumIntDictionary")]
+
         [Display(Name = "Number of vehicles per type")]
-        public Dictionary<Enum, int> NumberOfVehiclesPerType { get; }
+        public Dictionary<string, int> NumberOfVehiclesPerType { get; }
 
         [Display(Name = "Earliest check-in time")]
         public DateTime? EarliestCheckInTime { get; }
@@ -34,16 +34,19 @@ namespace Garage2._0.Models
         public int TotalPrice { get; }
 
         public StatisticsViewModel(List<Vehicle> vehicles) {
+
+            Garage2_0Context db = new Garage2_0Context();
             NumberOfVehicles = vehicles.Count();
             NumberOfWheels = vehicles.Sum(v => v.NumOfTires);
             NumberOfVehiclesPerColor = new Dictionary<Enum, int>();
             foreach (Colors color in Enum.GetValues(typeof(Colors))) {
                 NumberOfVehiclesPerColor.Add(color, vehicles.Where(v => v.Color == color).Count());
             }
-            NumberOfVehiclesPerType = new Dictionary<Enum, int>();
-            //foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes))) {
-            //    NumberOfVehiclesPerType.Add(type, vehicles.Where(v => v.VehicleType == type).Count());
-            //}
+            NumberOfVehiclesPerType = new Dictionary<string, int>();
+            foreach (var item in db.VehicleTypes)
+            {
+                NumberOfVehiclesPerType.Add(item.Type, vehicles.Where(v => v.VehicleType.Type == item.Type).Count());
+            }
             EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
             LatestCheckInTime = vehicles.OrderByDescending(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
             foreach (Vehicle vehicle in vehicles) {

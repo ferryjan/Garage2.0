@@ -1,0 +1,76 @@
+﻿@model Garage2._0.Models.StatisticsViewModel
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<br />
+
+<div class="well">
+    <h2>Statistics</h2>
+
+    <div>
+        <dl class="dl-horizontal statistics">
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehicles)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfVehicles)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehiclesPerColor)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfVehiclesPerColor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfVehiclesPerType)
+            </dt>
+            <dd>
+                <table>
+                @foreach (var item in Model.NumberOfVehiclesPerType)
+                {
+                    <tr>
+                        <td>@item.Key</td>
+                        <td>@item.Value</td>
+                    </tr>
+                }
+                </table>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfWheels)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfWheels)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EarliestCheckInTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EarliestCheckInTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LatestCheckInTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.LatestCheckInTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.TotalPrice)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

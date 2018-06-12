@@ -242,6 +242,7 @@
     <Content Include="Views\Vehicles1\Edit.cshtml" />
     <Content Include="Views\Vehicles1\Index.cshtml" />
     <Content Include="Views\Vehicles1\Receipt.cshtml" />
+    <Content Include="Views\Vehicles1\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
