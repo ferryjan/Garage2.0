@@ -38,11 +38,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.RegDate)
             </th>
+            <th>
+                Number of Vehicle Parked in The Garage
+            </th>
             <th></th>
         </tr>
 
+        @{int i = 0;} 
         @foreach (var item in Model)
-        {
+            {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.MemberId)
@@ -60,11 +64,16 @@
                     @Html.DisplayFor(modelItem => item.RegDate)
                 </td>
                 <td>
+                    @ViewBag.TotalCarsForEachMember[i]
+                </td>
+                <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
                 </td>
             </tr>
+
+            i++;
         }
 
     </table>

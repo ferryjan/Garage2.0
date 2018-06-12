@@ -17,6 +17,15 @@ namespace Garage2._0.Controllers
         // GET: Members
         public ActionResult Index(string option, string search)
         {
+            List<int> list = new List<int>();
+            foreach (var member in db.Members)
+            {
+                var tempList = db.Vehicles.Where(m => m.MemberId == member.MemberId);
+                list.Add(tempList.Count());
+            }
+
+            ViewBag.TotalCarsForEachMember = list;
+
             if (option == "MemberId")
             {
                 return View(db.Members.Where(e => e.MemberId.ToString() == search.ToLower() || search == null).ToList());
