@@ -40,8 +40,9 @@ namespace Garage2._0.Models
             foreach (Colors color in Enum.GetValues(typeof(Colors))) {
                 NumberOfVehiclesPerColor.Add(color, vehicles.Where(v => v.Color == color).Count());
             }
-            NumberOfVehiclesPerType = new Dictionary<Enum, int>();
-            //foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes))) {
+            //NumberOfVehiclesPerType = new Dictionary<Enum, int>();
+            //foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes)))
+            //{
             //    NumberOfVehiclesPerType.Add(type, vehicles.Where(v => v.VehicleType == type).Count());
             //}
             EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;

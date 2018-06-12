@@ -25,16 +25,16 @@ namespace Garage2._0.Models
             Array.Clear(ps, 0, ps.Length);
             foreach (var item in db.Vehicles)
             {
-                if (item.VehicleType.ToString() == "Car" || item.VehicleType.ToString() == "Van")
+                if (item.TypeId == 1 || item.TypeId == 2)
                 {
                     ps[item.ParkingSpaceNum] = 3;
                 }
-                if (item.VehicleType.ToString() == "Truck")
+                if (item.TypeId == 3)
                 {
                     ps[item.ParkingSpaceNum] = 3;
                     ps[item.ParkingSpaceNum + 1] = 3;
                 }
-                if (item.VehicleType.ToString() == "Motorcycle")
+                if (item.TypeId == 4)
                 {
                     ps[item.ParkingSpaceNum] += 1;
                 }
@@ -70,16 +70,16 @@ namespace Garage2._0.Models
 
         public void RemoveFromParkingSpace(Vehicle vehicle)
         {
-            if (vehicle.VehicleType.ToString() == "Car" || vehicle.VehicleType.ToString() == "Van")
+            if (vehicle.TypeId == 1 || vehicle.TypeId == 2)
             {
                 ps[vehicle.ParkingSpaceNum] = 0;
             }
-            if (vehicle.VehicleType.ToString() == "Truck")
+            if (vehicle.TypeId == 3)
             {
                 ps[vehicle.ParkingSpaceNum] = 0;
                 ps[vehicle.ParkingSpaceNum+1] = 0;
             }
-            if (vehicle.VehicleType.ToString() == "Motorcycle")
+            if (vehicle.TypeId == 4)
             {
                 ps[vehicle.ParkingSpaceNum] = ps[vehicle.ParkingSpaceNum] - 1;
             }
@@ -87,7 +87,7 @@ namespace Garage2._0.Models
 
         public int AssignParkingSpace(Vehicle vehicle)
         {
-            if (vehicle.VehicleType.ToString() == "Car" || vehicle.VehicleType.ToString() == "Van")
+            if (vehicle.TypeId == 1 || vehicle.TypeId == 2)
             {
                 for (int i = 0; i < Capacity; i++)
                 {
@@ -99,7 +99,7 @@ namespace Garage2._0.Models
                 }
             }
 
-            if (vehicle.VehicleType.ToString() == "Motorcycle")
+            if (vehicle.TypeId == 4)
             {
                 for (int i = 0; i < Capacity; i++)
                 {
@@ -119,7 +119,7 @@ namespace Garage2._0.Models
                 }
             }
 
-            if (vehicle.VehicleType.ToString() == "Truck")
+            if (vehicle.TypeId == 3)
             {
                 for (int i = 0; i < Capacity - 1; i++)
                 {

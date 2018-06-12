@@ -12,13 +12,43 @@ namespace Garage2._0.Controllers
 {
     public class Vehicles1Controller : Controller
     {
+        public static int parkingCapacity = 10;
         private Garage2_0Context db = new Garage2_0Context();
+        public ParkingSpace parkspace = new ParkingSpace(parkingCapacity);
 
-        // GET: Vehicles1
-        public ActionResult Index()
+        // GET: Vehicles
+        public ActionResult Index(string option, string search)
         {
-            var vehicles = db.Vehicles.Include(v => v.Member).Include(v => v.VehicleType);
-            return View(vehicles.ToList());
+            ViewBag.AvailableSpaces = parkspace.GetNumOfAvailableSpace();
+            ViewBag.Capacity = parkingCapacity;
+            if (ViewBag.AvailableSpaces == 0)
+            {
+                if (!parkspace.HasSpaceForMotorCycle())
+                {
+                    ViewBag.Msg = "There are no parking space available, please come later!";
+                }
+                else
+                {
+                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we have still space for the motorcycle. Welcome!";
+                }
+            }
+            else
+            {
+                ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
+                    "<br />Motorcycle: 3 motorcycles can share same parking space, 5 SEK/15min</h3>";
+            }
+            if (option == "RegNum")
+            {
+                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+            }
+            else if (option == "VehicleType")
+            {
+                return View(db.Vehicles.Where(e => e.VehicleType.ToString().ToLower() == search.ToLower() || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
+            }
         }
 
         // GET: Vehicles1/Details/5
@@ -32,6 +62,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null)
             {
                 return HttpNotFound();
+            }
+            if (vehicle.VehicleType.ToString() == "Truck")
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
             }
             return View(vehicle);
         }
@@ -54,12 +92,21 @@ namespace Garage2._0.Controllers
             vehicle.CheckInTime = DateTime.Now;
             if (ModelState.IsValid)
             {
-                
+                ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            var index = ps.AssignParkingSpace(vehicle);
+                if (index != -1)
+                {
+                    ViewBag.isFull = "";
+                    vehicle.ParkingSpaceNum = index;
                     db.Vehicles.Add(vehicle);
                     db.SaveChanges();
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.isFull = "There is no place to park your vehicle, sorry!";
+                }
             }
-
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "Name", vehicle.MemberId);
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type", vehicle.TypeId);
             return View(vehicle);
@@ -114,14 +161,14 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
-            //if (vehicle.VehicleType == VehicleTypes.Truck)
-            //{
-            //    ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
-            //}
-            //else
-            //{
-            //    ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
-            //}
+            if (vehicle.VehicleType.ToString() == "Truck")
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            }
             return View(vehicle);
         }
 
