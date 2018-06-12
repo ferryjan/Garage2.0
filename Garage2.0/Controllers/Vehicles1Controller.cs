@@ -218,6 +218,12 @@ namespace Garage2._0.Controllers
             return View(model);
         }
 
+        public ActionResult AdvancedView()
+        {
+            var model = new AdvancedViewModel(parkspace);
+            return View(model);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
