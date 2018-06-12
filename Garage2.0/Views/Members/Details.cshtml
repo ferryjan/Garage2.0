@@ -4,47 +4,51 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<br />
 
-<div>
-    <h4>Member</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="well">
+    <h2>Member Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div>
+        <h4>Member</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNr)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Address)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNr)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNr)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RegDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNr)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.RegDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RegDate)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.RegDate)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MemberId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

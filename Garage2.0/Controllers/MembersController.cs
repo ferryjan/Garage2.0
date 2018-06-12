@@ -15,9 +15,16 @@ namespace Garage2._0.Controllers
         private Garage2_0Context db = new Garage2_0Context();
 
         // GET: Members
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            return View(db.Members.ToList());
+            if (option == "MemberId")
+            {
+                return View(db.Members.Where(e => e.MemberId.ToString() == search.ToLower() || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Members.Where(e => e.Name.ToLower() == search.ToLower() || search == null).ToList());
+            }
         }
 
         // GET: Members/Details/5

@@ -164,6 +164,10 @@
     <Compile Include="Migrations\201806120807546_Garage2.5.Designer.cs">
       <DependentUpon>201806120807546_Garage2.5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806120852587_small-changes-member-model.cs" />
+    <Compile Include="Migrations\201806120852587_small-changes-member-model.Designer.cs">
+      <DependentUpon>201806120852587_small-changes-member-model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdvancedViewModel.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806120807546_Garage2.5.resx">
       <DependentUpon>201806120807546_Garage2.5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120852587_small-changes-member-model.resx">
+      <DependentUpon>201806120852587_small-changes-member-model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
