@@ -80,7 +80,7 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType.ToString() == "Truck")
+            if (vehicle.TypeId == 3)
             {
                 ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
             }
@@ -178,7 +178,7 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType.ToString() == "Truck")
+            if (vehicle.TypeId == 3)
             {
                 ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
             }
@@ -204,8 +204,8 @@ namespace Garage2._0.Controllers
         {
             Vehicle vehicle = db.Vehicles.Find(id);
             var model = new ReceiptViewModel(vehicle);
-            // ParkingSpace ps = new ParkingSpace(parkingCapacity);
-            // ps.RemoveFromParkingSpace(vehicle);
+            ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            ps.RemoveFromParkingSpace(vehicle);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
             return View(model);
