@@ -42,7 +42,7 @@
 
     @Html.Raw(ViewBag.Msg)
 
-    @using (Html.BeginForm("Index", "Vehicles", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Vehicles1", FormMethod.Get))
     {
         <b> Search Option: </b> <br /> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> <br /> @Html.RadioButton("option", "Color") <text> Color </text> <br />
         @Html.RadioButton("option", "VehicleType") <text> VehicleType </text> <br />

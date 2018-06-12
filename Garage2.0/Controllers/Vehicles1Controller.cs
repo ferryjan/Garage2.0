@@ -43,7 +43,24 @@ namespace Garage2._0.Controllers
             }
             else if (option == "VehicleType")
             {
-                return View(db.Vehicles.Where(e => e.VehicleType.ToString().ToLower() == search.ToLower() || search == null).ToList());
+                switch (search.ToLower())
+                {
+                    case "car":
+                        search = "1";
+                        break;
+                    case "van":
+                        search = "2";
+                        break;
+                    case "truck":
+                        search = "3";
+                        break;
+                    case "motorcycle":
+                        search = "4";
+                        break;
+                    default:
+                        break;
+                }
+                return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
             }
             else
             {
