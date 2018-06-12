@@ -9,10 +9,10 @@ namespace Garage2._0.Models
 {
     public class ReceiptViewModel
     {
-        [Display(Name = "Memember's ID")]
+        [Display(Name = "Member's ID")]
         public int MemberID { get; set; }
 
-        [Display(Name = "Memember's Name")]
+        [Display(Name = "Member's Name")]
         public string Name { get; set; }
 
         [Display(Name = "Vehicle Type")]

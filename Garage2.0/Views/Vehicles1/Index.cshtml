@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Garage2._0.Models.Vehicle>
 
 @{
-    ViewBag.Title = "List of Parked Vehicle";
+    ViewBag.Title = "List of Parked Vehicles";
 }
 
 @{
@@ -35,7 +35,7 @@
 
 <div class="well">
 
-    <h2>Welcome to Use Garage 2.0 Parking System</h2>
+    <h2>Welcome to Garage 2.5 Parking System</h2>
 
     <h3>Garage Capacity: @ViewBag.Capacity</h3>
     <h3>Available Spaces: @ViewBag.AvailableSpaces</h3>
@@ -128,7 +128,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Check Out", "Delete", new { id = item.Id })
         </td>
     </tr>
     i++;
