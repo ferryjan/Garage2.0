@@ -20,6 +20,12 @@ namespace Garage2._0.Migrations
             //    new Vehicle { VehicleType = VehicleTypes.Motorcycle, Color = Colors.Black, RegNum = "XYZ789", Model = "Yamaha", NumOfTires = 2, CheckInTime = DateTime.Now.AddDays(-1) },
             //    new Vehicle { VehicleType = VehicleTypes.Truck, Color = Colors.Blue, RegNum = "AAA111", Model = "Scania", NumOfTires = 8, CheckInTime = DateTime.Now.AddDays(-2) }
             //);
+            context.VehicleTypes.AddOrUpdate(
+                new VehicleType { Type= "Car"},
+                new VehicleType { Type = "Van" },
+                new VehicleType { Type = "Truck" },
+                new VehicleType { Type = "Motorcycle" }
+                );
         }
     }
 }

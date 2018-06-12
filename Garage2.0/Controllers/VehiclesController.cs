@@ -62,14 +62,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType == VehicleTypes.Truck)
-            {
-                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
-            }
-            else
-            {
-                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
-            }
+            //if (vehicle.VehicleType == VehicleTypes.Truck)
+            //{
+            //    ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            //}
+            //else
+            //{
+            //    ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            //}
             return View(vehicle);
         }
 
@@ -147,14 +147,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null) {
                 return HttpNotFound();
             }
-            if (vehicle.VehicleType == VehicleTypes.Truck)
-            {
-                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
-            }
-            else
-            {
-                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
-            }
+            //if (vehicle.VehicleType == VehicleTypes.Truck)
+            //{
+            //    ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            //}
+            //else
+            //{
+            //    ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            //}
             return View(vehicle);
         }
 

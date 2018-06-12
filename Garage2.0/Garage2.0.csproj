@@ -148,7 +148,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\Vehicles1Controller.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
+    <Compile Include="Controllers\VehicleTypesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,17 +160,19 @@
     <Compile Include="Migrations\201806040742102_init.Designer.cs">
       <DependentUpon>201806040742102_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806041013154_advanced.cs" />
-    <Compile Include="Migrations\201806041013154_advanced.Designer.cs">
-      <DependentUpon>201806041013154_advanced.cs</DependentUpon>
+    <Compile Include="Migrations\201806120807546_Garage2.5.cs" />
+    <Compile Include="Migrations\201806120807546_Garage2.5.Designer.cs">
+      <DependentUpon>201806120807546_Garage2.5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdvancedViewModel.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
+    <Compile Include="Models\Member.cs" />
     <Compile Include="Models\ParkingSpace.cs" />
     <Compile Include="Models\ReceiptViewModel.cs" />
     <Compile Include="Models\StatisticsViewModel.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Models\VehicleType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\RegNumValidatorAttribute.cs" />
   </ItemGroup>
@@ -221,9 +226,20 @@
     <Content Include="Views\Vehicles\Statistics.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\EnumIntDictionary.cshtml" />
     <Content Include="Views\Vehicles\AdvancedView.cshtml" />
+    <Content Include="Views\Members\Create.cshtml" />
+    <Content Include="Views\Members\Delete.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
+    <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Vehicles1\Create.cshtml" />
+    <Content Include="Views\Vehicles1\Delete.cshtml" />
+    <Content Include="Views\Vehicles1\Details.cshtml" />
+    <Content Include="Views\Vehicles1\Edit.cshtml" />
+    <Content Include="Views\Vehicles1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\VehicleTypes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -242,8 +258,8 @@
     <EmbeddedResource Include="Migrations\201806040742102_init.resx">
       <DependentUpon>201806040742102_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806041013154_advanced.resx">
-      <DependentUpon>201806041013154_advanced.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806120807546_Garage2.5.resx">
+      <DependentUpon>201806120807546_Garage2.5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

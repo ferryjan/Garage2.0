@@ -7,13 +7,6 @@ using System.Web;
 
 namespace Garage2._0.Models
 {
-    public enum VehicleTypes
-    {
-        Motorcycle,
-        Car,
-        Truck,
-        Van
-    }
 
     public enum Colors
     {
@@ -31,9 +24,6 @@ namespace Garage2._0.Models
     {
         public int Id { get; set; }
 
-        [EnumDataType(typeof(VehicleTypes))]
-        [Display(Name = "Vehicle Type")]
-        public VehicleTypes VehicleType { get; set; }
 
         [Required]
         [Display(Name = "Registration Number")]
@@ -58,5 +48,11 @@ namespace Garage2._0.Models
 
         [Display(Name = "Parking Position")]
         public int ParkingSpaceNum { get; set; }
+
+        public int TypeId { get; set; }
+        virtual public VehicleType VehicleType { get; set; }
+
+        public int MemberId { get; set; }
+        virtual public Member Member { get; set; }
     }
 }

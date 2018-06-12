@@ -41,9 +41,9 @@ namespace Garage2._0.Models
                 NumberOfVehiclesPerColor.Add(color, vehicles.Where(v => v.Color == color).Count());
             }
             NumberOfVehiclesPerType = new Dictionary<Enum, int>();
-            foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes))) {
-                NumberOfVehiclesPerType.Add(type, vehicles.Where(v => v.VehicleType == type).Count());
-            }
+            //foreach (VehicleTypes type in Enum.GetValues(typeof(VehicleTypes))) {
+            //    NumberOfVehiclesPerType.Add(type, vehicles.Where(v => v.VehicleType == type).Count());
+            //}
             EarliestCheckInTime = vehicles.OrderBy(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
             LatestCheckInTime = vehicles.OrderByDescending(v => v.CheckInTime).FirstOrDefault()?.CheckInTime;
             foreach (Vehicle vehicle in vehicles) {
