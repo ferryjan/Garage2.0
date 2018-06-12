@@ -99,7 +99,9 @@ namespace Garage2._0.Controllers
             return View(vehicle);
         }
 
+
         // GET: Vehicles1/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +113,14 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
+            //if (vehicle.VehicleType == VehicleTypes.Truck)
+            //{
+            //    ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            //}
+            //else
+            //{
+            //    ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            //}
             return View(vehicle);
         }
 
@@ -119,10 +129,21 @@ namespace Garage2._0.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            // Actual delete is made in Receipt in order to avoid an enormous GET query string,
+            // which could be manipulated by user
+            return RedirectToAction("Receipt", new { id });
+        }
+
+        // GET: Vehicles1/Receipt/5
+        public ActionResult Receipt(int id)
+        {
             Vehicle vehicle = db.Vehicles.Find(id);
+            var model = new ReceiptViewModel(vehicle);
+            // ParkingSpace ps = new ParkingSpace(parkingCapacity);
+            // ps.RemoveFromParkingSpace(vehicle);
             db.Vehicles.Remove(vehicle);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)

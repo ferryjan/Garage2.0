@@ -9,9 +9,14 @@ namespace Garage2._0.Models
 {
     public class ReceiptViewModel
     {
-        //[EnumDataType(typeof(VehicleTypes))]
-        //[Display(Name = "Vehicle Type")]
-        //public VehicleTypes VehicleType { get; set; }
+        [Display(Name = "Memember's ID")]
+        public int MemberID { get; set; }
+
+        [Display(Name = "Memember's Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Vehicle Type")]
+        public string VehicleType { get; set; }
 
         [Display(Name = "Registration Number")]
         public string RegNum { get; set; }
@@ -38,7 +43,9 @@ namespace Garage2._0.Models
         public int Price { get; set; }
 
         public ReceiptViewModel(Vehicle vehicle) {
-            //VehicleType = vehicle.VehicleType;
+            MemberID = vehicle.Member.MemberId;
+            Name = vehicle.Member.Name;
+            VehicleType = vehicle.VehicleType.Type;
             RegNum = vehicle.RegNum;
             Color = vehicle.Color;
             NumOfTires = vehicle.NumOfTires;
@@ -46,14 +53,14 @@ namespace Garage2._0.Models
             CheckInTime = vehicle.CheckInTime;
             CheckOutTime = DateTime.Now;
             TimeParked = CheckOutTime - CheckInTime;
-            //if (vehicle.VehicleType == VehicleTypes.Truck)
-            //{
-            //    Price = 2 * VehicleHelpers.CalculateParkingPrice(TimeParked);
-            //}
-            //else
-            //{
-            //    Price = VehicleHelpers.CalculateParkingPrice(TimeParked);
-            //}
+            if (VehicleType == "Truck")
+            {
+                Price = 2 * VehicleHelpers.CalculateParkingPrice(TimeParked);
+            }
+            else
+            {
+                Price = VehicleHelpers.CalculateParkingPrice(TimeParked);
+            }
         }
     }
 }
