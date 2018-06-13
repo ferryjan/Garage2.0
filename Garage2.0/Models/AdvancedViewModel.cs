@@ -29,13 +29,13 @@ namespace Garage2._0.Models
             var vehicle = db.Vehicles.Where(a => a.ParkingSpaceNum == (index)).FirstOrDefault();
             if (vehicle != null)
             {
-                if (vehicle.VehicleType.ToString() == "Car")
+                if (vehicle.VehicleType.Type == "Car")
                     return 1;
-                if (vehicle.VehicleType.ToString() == "Van")
+                if (vehicle.VehicleType.Type == "Van")
                     return 2;
-                if (vehicle.VehicleType.ToString() == "Truck")
+                if (vehicle.VehicleType.Type == "Truck")
                     return 3;
-                if (vehicle.VehicleType.ToString() == "Motorcycle")
+                if (vehicle.VehicleType.Type == "Motorcycle")
                     return 4;
                 else
                     return 0;

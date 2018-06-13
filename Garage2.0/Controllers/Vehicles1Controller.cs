@@ -210,6 +210,19 @@ namespace Garage2._0.Controllers
             db.SaveChanges();
             return View(model);
         }
+        // GET: Vehicles1/Statistics
+        public ActionResult Statistics()
+        {
+            var vehicles = db.Vehicles.ToList();
+            var model = new StatisticsViewModel(vehicles);
+            return View(model);
+        }
+
+        public ActionResult AdvancedView()
+        {
+            var model = new AdvancedViewModel(parkspace);
+            return View(model);
+        }
 
         protected override void Dispose(bool disposing)
         {

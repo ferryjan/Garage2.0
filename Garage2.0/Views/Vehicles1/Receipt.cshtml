@@ -12,7 +12,8 @@
     <div>
         <h4>Vehicle</h4>
         <hr />
-        <dl class="dl-horizontal">
+        <dl class="dl-horizontal receipt">
+            <h1 id="receiptTitle">Receipt</h1>
             <dt>
                 @Html.DisplayNameFor(model => model.MemberID)
             </dt>
@@ -73,12 +74,14 @@
             <dd>
                 @Html.DisplayFor(model => model.TimeParked)
             </dd>
-            <dt>
+            <div id="pricespacer"></div>
+            <dt style="font-size: larger">
                 @Html.DisplayNameFor(model => model.Price)
             </dt>
-            <dd>
+            <dd style="font-size: xx-large">
                 @Html.DisplayFor(model => model.Price)
             </dd>
+            <h2 id="watermark">Garage 2.5 &copy;</h2>
         </dl>
     </div>
 
