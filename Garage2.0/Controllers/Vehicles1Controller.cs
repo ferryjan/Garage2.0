@@ -16,11 +16,56 @@ namespace Garage2._0.Controllers
         private Garage2_0Context db = new Garage2_0Context();
         public ParkingSpace parkspace = new ParkingSpace(parkingCapacity);
 
-        // GET: Vehicles1
-        public ActionResult Index()
+        // GET: Vehicles
+        public ActionResult Index(string option, string search)
         {
-            var vehicles = db.Vehicles.Include(v => v.Member).Include(v => v.VehicleType);
-            return View(vehicles.ToList());
+            ViewBag.AvailableSpaces = parkspace.GetNumOfAvailableSpace();
+            ViewBag.Capacity = parkingCapacity;
+            if (ViewBag.AvailableSpaces == 0)
+            {
+                if (!parkspace.HasSpaceForMotorCycle())
+                {
+                    ViewBag.Msg = "There are no parking space available, please come later!";
+                }
+                else
+                {
+                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we have still space for the motorcycle. Welcome!";
+                }
+            }
+            else
+            {
+                ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
+                    "<br />Motorcycle: 3 motorcycles can share same parking space, 5 SEK/15min</h3>";
+            }
+            if (option == "RegNum")
+            {
+                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+            }
+            else if (option == "VehicleType")
+            {
+                switch (search.ToLower())
+                {
+                    case "car":
+                        search = "1";
+                        break;
+                    case "van":
+                        search = "2";
+                        break;
+                    case "truck":
+                        search = "3";
+                        break;
+                    case "motorcycle":
+                        search = "4";
+                        break;
+                    default:
+                        break;
+                }
+                return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
+            }
         }
 
         // GET: Vehicles1/Details/5
@@ -34,6 +79,14 @@ namespace Garage2._0.Controllers
             if (vehicle == null)
             {
                 return HttpNotFound();
+            }
+            if (vehicle.TypeId == 3)
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
             }
             return View(vehicle);
         }
@@ -99,6 +152,29 @@ namespace Garage2._0.Controllers
             }
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr", vehicle.MemberId);
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type", vehicle.TypeId);
+            return View(vehicle);
+        }
+        // GET: Vehicles1/Delete/5
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Vehicle vehicle = db.Vehicles.Find(id);
+            if (vehicle == null)
+            {
+                return HttpNotFound();
+            }
+            if (vehicle.TypeId == 3)
+            {
+                ViewBag.ParkingPosition = (vehicle.ParkingSpaceNum + 1) + " and " + (vehicle.ParkingSpaceNum + 2);
+            }
+            else
+            {
+                ViewBag.ParkingPosition = vehicle.ParkingSpaceNum + 1;
+            }
             return View(vehicle);
         }
 
