@@ -24,6 +24,19 @@ namespace Garage2._0.Controllers
                 list.Add(tempList.Count());
             }
 
+            if (TempData["Msg"] == null)
+            {
+                ViewBag.Message = "";
+            }
+            else if (TempData["Msg"].ToString() == "success")
+            {
+                ViewBag.Message = "This member has been successfully deleted";
+            }
+            else
+            {
+                ViewBag.Message = "This member cannot be deleted due to he/she has vehicle parked in the garage! Check out the Vehicle first!";
+            }
+
             ViewBag.TotalCarsForEachMember = list;
 
             if (option == "MemberId")
@@ -118,7 +131,18 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
-            return View(member);
+            var tempList = db.Vehicles.Where(m => m.MemberId == member.MemberId);
+            if (tempList.Count() == 0)
+            {
+                ViewBag.UnableToDeleteMsg = "";
+                return View(member);
+            }
+            else
+            {
+                TempData["Msg"] = "failed";
+                return RedirectToAction("Index");
+            }
+            
         }
 
         // POST: Members/Delete/5
@@ -129,6 +153,7 @@ namespace Garage2._0.Controllers
             Member member = db.Members.Find(id);
             db.Members.Remove(member);
             db.SaveChanges();
+            TempData["Msg"] = "success";
             return RedirectToAction("Index");
         }
 

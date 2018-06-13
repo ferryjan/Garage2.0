@@ -21,6 +21,10 @@
         @Html.ActionLink("Register A New Member", "Create", null, new { @class = "btn btn-danger btn-large" })
     </p>
 
+    <p>
+        @ViewBag.Message
+    </p>
+
     <table class="table">
         <tr>
             <th>
@@ -39,14 +43,14 @@
                 @Html.DisplayNameFor(model => model.RegDate)
             </th>
             <th>
-                Number of Vehicle Parked in The Garage
+                Number of Vehicles Parked in The Garage
             </th>
             <th></th>
         </tr>
 
-        @{int i = 0;} 
+        @{int i = 0;}
         @foreach (var item in Model)
-            {
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.MemberId)
