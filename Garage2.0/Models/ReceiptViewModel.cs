@@ -9,8 +9,8 @@ namespace Garage2._0.Models
 {
     public class ReceiptViewModel
     {
-        [Display(Name = "Member's ID")]
-        public int MemberID { get; set; }
+        [Display(Name = "Membership Number")]
+        public string MembershipNr { get; set; }
 
         [Display(Name = "Member's Name")]
         public string Name { get; set; }
@@ -43,7 +43,7 @@ namespace Garage2._0.Models
         public int Price { get; set; }
 
         public ReceiptViewModel(Vehicle vehicle) {
-            MemberID = vehicle.Member.MemberId;
+            MembershipNr = vehicle.Member.MembershipNr;
             Name = vehicle.Member.Name;
             VehicleType = vehicle.VehicleType.Type;
             RegNum = vehicle.RegNum;
