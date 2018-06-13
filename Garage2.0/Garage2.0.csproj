@@ -172,6 +172,14 @@
     <Compile Include="Migrations\201806130802058_add-membership-number.Designer.cs">
       <DependentUpon>201806130802058_add-membership-number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806131123358_222.cs" />
+    <Compile Include="Migrations\201806131123358_222.Designer.cs">
+      <DependentUpon>201806131123358_222.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806131130183_NewVehicleContext.cs" />
+    <Compile Include="Migrations\201806131130183_NewVehicleContext.Designer.cs">
+      <DependentUpon>201806131130183_NewVehicleContext.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdvancedViewModel.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -279,6 +287,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806130802058_add-membership-number.resx">
       <DependentUpon>201806130802058_add-membership-number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131123358_222.resx">
+      <DependentUpon>201806131123358_222.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806131130183_NewVehicleContext.resx">
+      <DependentUpon>201806131130183_NewVehicleContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
