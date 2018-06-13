@@ -1,5 +1,5 @@
 ﻿@{ 
-    ViewBag.AppName = "Garage 2.5";
+    var applicationName = "Garage 2.5";
 }
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ViewBag.AppName</title>
+    <title>@applicationName</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink((string)ViewBag.AppName, "Index", "Vehicles1", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(applicationName, "Index", "Vehicles1", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -42,7 +42,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - @ViewBag.AppName</p>
+            <p>&copy; @DateTime.Now.Year - @applicationName</p>
         </footer>
     </div>
 
