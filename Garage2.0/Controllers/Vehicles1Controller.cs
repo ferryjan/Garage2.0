@@ -147,7 +147,7 @@ namespace Garage2._0.Controllers
         // GET: Vehicles1/Create
         public ActionResult Create()
         {
-            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "Name");
+            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr");
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type");
             return View();
         }
@@ -177,7 +177,7 @@ namespace Garage2._0.Controllers
                     ViewBag.isFull = "There is no place to park your vehicle, sorry!";
                 }
             }
-            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "Name", vehicle.MemberId);
+            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr", vehicle.MemberId);
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type", vehicle.TypeId);
             return View(vehicle);
         }
@@ -194,7 +194,7 @@ namespace Garage2._0.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "Name", vehicle.MemberId);
+            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr", vehicle.MemberId);
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type", vehicle.TypeId);
             return View(vehicle);
         }
@@ -212,7 +212,7 @@ namespace Garage2._0.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "Name", vehicle.MemberId);
+            ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr", vehicle.MemberId);
             ViewBag.TypeId = new SelectList(db.VehicleTypes, "TypeId", "Type", vehicle.TypeId);
             return View(vehicle);
         }
