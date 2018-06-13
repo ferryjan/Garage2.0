@@ -55,8 +55,10 @@ namespace Garage2._0.Models
 
         [Display(Name = "Customer ID")]
         [Required]
-        [MemberIdValidator]
         public int MemberId { get; set; }
+        [Required]
+        [MemberIdValidator]
+        public string MembershipNr { get; set; }
         virtual public Member Member { get; set; }
     }
 }
