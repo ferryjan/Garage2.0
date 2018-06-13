@@ -17,7 +17,7 @@ namespace Garage2._0.Validators
 
                 Vehicle vehicle = (Vehicle)validationContext.ObjectInstance;
 
-                var result = db.Members.FirstOrDefault(v => v.MemberId == vehicle.MemberId);
+                var result = db.Members.FirstOrDefault(v => v.MembershipNr == vehicle.Member.MembershipNr);
                 if (result == null)
                 {
                     return new ValidationResult("Could not find customer with that ID");
