@@ -68,6 +68,59 @@ namespace Garage2._0.Controllers
             }
         }
 
+
+        // GET: Vehicles/ViewInDetail
+        public ActionResult ViewInDetail(string option, string search)
+        {
+            ViewBag.AvailableSpaces = parkspace.GetNumOfAvailableSpace();
+            ViewBag.Capacity = parkingCapacity;
+            if (ViewBag.AvailableSpaces == 0)
+            {
+                if (!parkspace.HasSpaceForMotorCycle())
+                {
+                    ViewBag.Msg = "There are no parking space available, please come later!";
+                }
+                else
+                {
+                    ViewBag.Msg = "There are no parking space for car/van/truck. However, we have still space for the motorcycle. Welcome!";
+                }
+            }
+            else
+            {
+                ViewBag.Msg = "<h3>Welcome! You can park your vehicle here! <br />Car/Van: 1 parking space, 5 SEK/15min <br />Truck: 2 parking spaces, 10 SEK/15min" +
+                    "<br />Motorcycle: 3 motorcycles can share same parking space, 5 SEK/15min</h3>";
+            }
+            if (option == "RegNum")
+            {
+                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+            }
+            else if (option == "VehicleType")
+            {
+                switch (search.ToLower())
+                {
+                    case "car":
+                        search = "1";
+                        break;
+                    case "van":
+                        search = "2";
+                        break;
+                    case "truck":
+                        search = "3";
+                        break;
+                    case "motorcycle":
+                        search = "4";
+                        break;
+                    default:
+                        break;
+                }
+                return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
+            }
+        }
+
         // GET: Vehicles1/Details/5
         public ActionResult Details(int? id)
         {

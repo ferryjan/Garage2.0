@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Garage2._0.Models.Vehicle>
+
+@{
+    ViewBag.Title = "List of Parked Vehicles In Detail";
+}
+
+@{
+    var vehicleList = Model;
+    var parkingInfo = Model.Select(v => v.ParkingSpaceNum).ToList();
+    var parkingInfoList = parkingInfo.ConvertAll<string>(x => x.ToString());
+
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        if (Model.ElementAt(i).TypeId == 3)
+        {
+            int.TryParse(parkingInfoList[i], out int index);
+            parkingInfoList[i] = (index + 1) + " & " + (index + 2);
+        }
+        else
+        {
+            int.TryParse(parkingInfoList[i], out int index);
+            parkingInfoList[i] = (index + 1).ToString();
+        }
+    }
+
+    var checkinList = Model.Select(v => v.CheckInTime).ToList();
+    List<TimeSpan> parkTimeList = new List<TimeSpan>();
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        parkTimeList.Add(DateTime.Now - checkinList[i]);
+    }
+}
+
+<br />
+
+<div class="well">
+
+
+    @using (Html.BeginForm("ViewInDetail", "Vehicles1", FormMethod.Get))
+    {
+        <b> Search Option: </b> <br /> @Html.RadioButton("option", "RegNum") <text>Registration Number</text> <br /> @Html.RadioButton("option", "Color") <text> Color </text> <br />
+        @Html.RadioButton("option", "VehicleType") <text> Vehicle Type </text> <br />
+        @Html.TextBox("search") <input type="submit" name="submit" value="Search" class="btn btn-info" />
+    }
+
+    <br />
+
+    <table class="table sortable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Member.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleType.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckInTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfTires)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                Total Time Parked
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParkingSpaceNum)
+            </th>
+        </tr>
+
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="7"> <b>Records not found</b> </td>
+            </tr>
+        }
+        else
+        {
+            int i = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Member.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VehicleType.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RegNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CheckInTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumOfTires)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @parkTimeList[i].Days Day @parkTimeList[i].Hours Hour @parkTimeList[i].Minutes Min
+                    </td>
+                    <td>
+                        @parkingInfoList[i]
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+    </table>
+</div>

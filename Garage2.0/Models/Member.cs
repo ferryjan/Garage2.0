@@ -13,6 +13,7 @@ namespace Garage2._0.Models
         public int MemberId { get; set; }
 
         [Required]
+        [Display(Name = "Member Name")]
         public string Name { get; set; }
         [Required]
         public string Address { get; set; }

@@ -244,6 +244,7 @@
     <Content Include="Views\Vehicles1\Receipt.cshtml" />
     <Content Include="Views\Vehicles1\Statistics.cshtml" />
     <Content Include="Views\Vehicles1\AdvancedView.cshtml" />
+    <Content Include="Views\Vehicles1\ViewInDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
