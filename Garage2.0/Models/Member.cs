@@ -9,8 +9,11 @@ namespace Garage2._0.Models
     public class Member
     {
         [Key]
-        [Display(Name = "Member ID")]
+        [Display(Name = "Member Index")]
         public int MemberId { get; set; }
+
+        [Display(Name = "Membership Number")]
+        public string MembershipNr { get; set; }
 
         [Required]
         [Display(Name = "Member Name")]

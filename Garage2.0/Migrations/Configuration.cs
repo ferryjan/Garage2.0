@@ -13,9 +13,9 @@ namespace Garage2._0.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Garage2_0Context context) { 
+        protected override void Seed(Garage2_0Context context) {
             //context.VehicleTypes.AddOrUpdate(
-            //    new VehicleType { Type= "Car"},
+            //    new VehicleType { Type = "Car" },
             //    new VehicleType { Type = "Van" },
             //    new VehicleType { Type = "Truck" },
             //    new VehicleType { Type = "Motorcycle" }

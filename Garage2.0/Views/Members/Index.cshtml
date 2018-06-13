@@ -11,7 +11,7 @@
 
     @using (Html.BeginForm("Index", "Members", FormMethod.Get))
     {
-        <b> Search Option: </b> <br /> @Html.RadioButton("option", "MemberId") <text>Member ID</text> <br /> @Html.RadioButton("option", "Name") <text> Member Name </text> <br />
+        <b> Search Option: </b> <br /> @Html.RadioButton("option", "MembershipNr") <text>Membership Number</text> <br /> @Html.RadioButton("option", "Name") <text> Member Name </text> <br />
         @Html.TextBox("search") <input type="submit" name="submit" value="Search" class="btn btn-info" />
     }
 
@@ -28,7 +28,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MemberId)
+                @Html.DisplayNameFor(model => model.MembershipNr)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -53,7 +53,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MemberId)
+                    @Html.DisplayFor(modelItem => item.MembershipNr)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)

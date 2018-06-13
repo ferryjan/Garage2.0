@@ -39,9 +39,9 @@ namespace Garage2._0.Controllers
 
             ViewBag.TotalCarsForEachMember = list;
 
-            if (option == "MemberId")
+            if (option == "MembershipNr")
             {
-                return View(db.Members.Where(e => e.MemberId.ToString() == search.ToLower() || search == null).ToList());
+                return View(db.Members.Where(e => e.MembershipNr.ToLower() == search.ToLower() || search == null).ToList());
             }
             else
             {
@@ -78,6 +78,7 @@ namespace Garage2._0.Controllers
         public ActionResult Create([Bind(Include = "MemberId,Name,Address,PhoneNr")] Member member)
         {
             member.RegDate = DateTime.Now;
+            member.MembershipNr = GenerateMembershipNumber();
             if (ModelState.IsValid)
             {
                 db.Members.Add(member);
@@ -108,7 +109,7 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MemberId,Name,Address,PhoneNr,RegDate")] Member member)
+        public ActionResult Edit([Bind(Include = "MemberId,MembershipNr,Name,Address,PhoneNr,RegDate")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -164,6 +165,20 @@ namespace Garage2._0.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public string GenerateMembershipNumber()
+        {
+            char[] pattern = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            string result = "";
+            int n = pattern.Length;
+            Random random = new Random();
+            for (int i = 0; i < 6; i++)
+            {
+                int rnd = random.Next(0, n);
+                result += pattern[rnd];
+            }
+            return result;
         }
     }
 }
