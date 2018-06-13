@@ -172,6 +172,10 @@
     <Compile Include="Migrations\201806130802058_add-membership-number.Designer.cs">
       <DependentUpon>201806130802058_add-membership-number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806130914113_111.cs" />
+    <Compile Include="Migrations\201806130914113_111.Designer.cs">
+      <DependentUpon>201806130914113_111.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdvancedViewModel.cs" />
     <Compile Include="Models\Garage2_0Context.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806130802058_add-membership-number.resx">
       <DependentUpon>201806130802058_add-membership-number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806130914113_111.resx">
+      <DependentUpon>201806130914113_111.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
