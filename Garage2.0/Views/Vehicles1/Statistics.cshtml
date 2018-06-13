@@ -12,6 +12,12 @@
     <div>
         <dl class="dl-horizontal statistics">
             <dt>
+                @Html.DisplayNameFor(model => model.NumberOfMembers)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfMembers)
+            </dd>
+            <dt>
                 @Html.DisplayNameFor(model => model.NumberOfVehicles)
             </dt>
             <dd>
@@ -30,13 +36,13 @@
             </dt>
             <dd>
                 <table>
-                @foreach (var item in Model.NumberOfVehiclesPerType)
-                {
-                    <tr>
-                        <td class="key">@item.Key</td>
-                        <td class="value">@item.Value</td>
-                    </tr>
-                }
+                    @foreach (var item in Model.NumberOfVehiclesPerType)
+            {
+                <tr>
+                    <td class="key">@item.Key</td>
+                    <td class="value">@item.Value</td>
+                </tr>
+    }
                 </table>
             </dd>
 

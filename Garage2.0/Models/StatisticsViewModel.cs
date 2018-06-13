@@ -9,6 +9,9 @@ namespace Garage2._0.Models
 {
     public class StatisticsViewModel
     {
+        [Display(Name = "Total number of members")]
+        public int NumberOfMembers { get; }
+
         [Display(Name = "Total number of vehicles")]
         public int NumberOfVehicles { get; }
 
@@ -36,6 +39,7 @@ namespace Garage2._0.Models
         public StatisticsViewModel(List<Vehicle> vehicles) {
 
             Garage2_0Context db = new Garage2_0Context();
+            NumberOfMembers = db.Members.Count();
             NumberOfVehicles = vehicles.Count();
             NumberOfWheels = vehicles.Sum(v => v.NumOfTires);
             NumberOfVehiclesPerColor = new Dictionary<Enum, int>();
