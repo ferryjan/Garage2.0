@@ -10,14 +10,14 @@ namespace Garage2._0.Models
 
     public enum Colors
     {
-        Red,
-        Blue,
-        White,
-        Silver,
-        Black,
-        Grey,
-        Brown,
-        Green
+        Red = 1,
+        Blue = 2,
+        White = 3,
+        Silver = 4,
+        Black = 5,
+        Grey = 6,
+        Brown = 7,
+        Green = 8
     }
 
     public class Vehicle
@@ -32,6 +32,7 @@ namespace Garage2._0.Models
         public string RegNum { get; set; }
 
         [EnumDataType(typeof(Colors))]
+        [Range(1, int.MaxValue, ErrorMessage = "Select a correct color")]
         public Colors Color { get; set; }
 
         [Required]

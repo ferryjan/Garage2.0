@@ -29,7 +29,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Color, htmlAttributes: new { @class = "form-control" })
+                @Html.EnumDropDownListFor(model => model.Color, "-- Select A Color --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,15 +61,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TypeId, "Vehicle Type", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TypeId", null, "-- Select A Vehicle Type --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TypeId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MemberId, "Memebership Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MemberId, "Membership Number", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("MemberId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("MemberId", null, "-- Select Membership Number --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MemberId, "", new { @class = "text-danger" })
             </div>
         </div>
