@@ -109,10 +109,22 @@ namespace Garage2._0.Controllers
             vehicle.CheckInTime = DateTime.Now;
             if (ModelState.IsValid)
             {
-                vehicle.MemberId = db.Members.FirstOrDefault(v => v.MembershipNr == vehicle.MembershipNr).MemberId;
-                db.Vehicles.Add(vehicle);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                ParkingSpace ps = new ParkingSpace(parkingCapacity);
+                var index = ps.AssignParkingSpace(vehicle);
+                if (index != -1)
+                {
+                    ViewBag.isFull = "";
+                    vehicle.ParkingSpaceNum = index;
+                    vehicle.MemberId = db.Members.FirstOrDefault(v => v.MembershipNr == vehicle.MembershipNr).MemberId;
+                    db.Vehicles.Add(vehicle);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.isFull = "There is no place to park your vehicle, sorry!";
+                }
             }
 
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "MembershipNr", vehicle.MemberId);
