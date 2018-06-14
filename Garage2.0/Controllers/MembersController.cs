@@ -17,11 +17,32 @@ namespace Garage2._0.Controllers
         // GET: Members
         public ActionResult Index(string option, string search)
         {
-            List<int> list = new List<int>();
+            List<int> totalCarsForEachMemberList = new List<int>();
             foreach (var member in db.Members)
             {
                 var tempList = db.Vehicles.Where(m => m.MemberId == member.MemberId);
-                list.Add(tempList.Count());
+                totalCarsForEachMemberList.Add(tempList.Count());
+            }
+
+            List<int> totalParkingFeeForEachMemberList = new List<int>();
+            foreach (var member in db.Members)
+            {
+                var tempList = db.Vehicles.Where(m => m.MemberId == member.MemberId);
+                var cost = 0;
+                foreach (var item in tempList)
+                {                 
+                    if (item.TypeId == 3)
+                    {
+                        var timeDiffInMin = (DateTime.Now - item.CheckInTime).TotalMinutes;
+                        cost = cost + (int)Math.Ceiling(timeDiffInMin / 15) * 10;
+                    }
+                    else
+                    {
+                        var timeDiffInMin = (DateTime.Now - item.CheckInTime).TotalMinutes;
+                        cost = cost + (int)Math.Ceiling(timeDiffInMin / 15) * 5;
+                    }
+                }
+                totalParkingFeeForEachMemberList.Add(cost);
             }
 
             if (TempData["Msg"] == null)
@@ -34,10 +55,11 @@ namespace Garage2._0.Controllers
             }
             else
             {
-                ViewBag.Message = "This member cannot be deleted due to he/she has vehicle parked in the garage! Check out the Vehicle first!";
+                ViewBag.Message = "This member cannot be deleted due to he/she has vehicle(s) parked in the garage! Check out all the vehicle(s) first!";
             }
 
-            ViewBag.TotalCarsForEachMember = list;
+            ViewBag.TotalCarsForEachMember = totalCarsForEachMemberList;
+            ViewBag.TotalParkingFeeForEachMember = totalParkingFeeForEachMemberList;
 
             if (option == "MembershipNr")
             {
