@@ -12,7 +12,7 @@ namespace Garage2._0.Models
         [Display(Name = "Member Index")]
         public int MemberId { get; set; }
 
-        [Display(Name = "Membership Number")]
+        [Display(Name = "Membership Number  (Only visible for testing!)")]
         public string MembershipNr { get; set; }
 
         [Required]
