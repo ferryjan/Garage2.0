@@ -61,13 +61,30 @@ namespace Garage2._0.Controllers
             ViewBag.TotalCarsForEachMember = totalCarsForEachMemberList;
             ViewBag.TotalParkingFeeForEachMember = totalParkingFeeForEachMemberList;
 
+            if (TempData.ContainsKey("new member"))
+                ViewBag.NewMember = TempData["new member"]; 
+
             if (option == "MembershipNr")
             {
-                return View(db.Members.Where(e => e.MembershipNr.ToLower() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Members.ToList());
+                }
+                else
+                {
+                    return View(db.Members.Where(e => e.MembershipNr.ToLower() == search.ToLower() || search == null).ToList());
+                }           
             }
             else
             {
-                return View(db.Members.Where(e => e.Name.ToLower() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Members.ToList());
+                }
+                else
+                {
+                    return View(db.Members.Where(e => e.Name.ToLower() == search.ToLower() || search == null).ToList());
+                }            
             }
         }
 
@@ -105,6 +122,7 @@ namespace Garage2._0.Controllers
             {
                 db.Members.Add(member);
                 db.SaveChanges();
+                TempData["new member"] = member;
                 return RedirectToAction("Index");
             }
 

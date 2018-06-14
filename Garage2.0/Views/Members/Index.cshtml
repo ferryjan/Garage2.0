@@ -21,7 +21,7 @@
         @Html.ActionLink("Register A New Member", "Create", null, new { @class = "btn btn-danger btn-large" })
     </p>
 
-    <p>
+    <p style="font-size: 200%; color: red">
         @ViewBag.Message
     </p>
 
@@ -46,53 +46,88 @@
                 Number of Vehicles Parked in The Garage
             </th>
             <th>
-                Total Parking Cost By Now 
+                Total Parking Cost By Now
             </th>
             <th></th>
         </tr>
 
 
         @if (Model.Count() == 0)
-         {
-             <tr>
-                 <td colspan="8"> <b>Records not found</b> </td>
-             </tr>
+        {
+            <tr>
+                <td colspan="8"> <b>Records not found</b> </td>
+            </tr>
         }
         else
         {
             int i = 0;
             foreach (var item in Model)
             {
-             <tr>
-                 <td>
-                     @Html.DisplayFor(modelItem => item.MembershipNr)
-                 </td>
-                 <td>
-                     @Html.DisplayFor(modelItem => item.Name)
-                 </td>
-                 <td>
-                     @Html.DisplayFor(modelItem => item.Address)
-                 </td>
-                 <td>
-                     @Html.DisplayFor(modelItem => item.PhoneNr)
-                 </td>
-                 <td>
-                     @Html.DisplayFor(modelItem => item.RegDate)
-                 </td>
-                 <td>
-                     @ViewBag.TotalCarsForEachMember[i]
-                 </td>
-                 <td>
-                     @ViewBag.TotalParkingFeeForEachMember[i] :-
-                 </td>
-                 <td>
-                     @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
-                     @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
-                     @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
-                 </td>
-             </tr>
+                if (ViewBag.NewMember != null && item.MembershipNr == ViewBag.NewMember.MembershipNr)
+                {
+                    <tr style="color:crimson; font-style:italic">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MembershipNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegDate)
+                        </td>
+                        <td>
+                            @ViewBag.TotalCarsForEachMember[i]
+                        </td>
+                        <td>
+                            @ViewBag.TotalParkingFeeForEachMember[i] :-
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+                        </td>
+                    </tr>
+                }
 
-            i++;
+                else
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MembershipNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RegDate)
+                        </td>
+                        <td>
+                            @ViewBag.TotalCarsForEachMember[i]
+                        </td>
+                        <td>
+                            @ViewBag.TotalParkingFeeForEachMember[i] :-
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.MemberId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.MemberId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MemberId })
+                        </td>
+                    </tr>}
+
+
+                i++;
             }
         }
 

@@ -39,7 +39,14 @@ namespace Garage2._0.Controllers
             }
             if (option == "RegNum")
             {
-                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Vehicles.ToList());
+                }
+                else
+                {
+                    return View(db.Vehicles.Where(e => e.RegNum.ToLower().Contains(search.ToLower()) || search == null).ToList());
+                }               
             }
             else if (option == "VehicleType")
             {
@@ -60,7 +67,14 @@ namespace Garage2._0.Controllers
                     default:
                         break;
                 }
-                return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Vehicles.ToList());
+                }
+                else
+                {
+                    return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+                }                
             }
             else
             {
@@ -154,7 +168,7 @@ namespace Garage2._0.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RegNum,Color,CheckInTime,NumOfTires,Model,ParkingSpaceNum,TypeId,MemberId")] Vehicle vehicle)
+        public ActionResult Edit([Bind(Include = "Id,RegNum,Color,CheckInTime,NumOfTires,Model,ParkingSpaceNum,TypeId,MemberId,MembershipNr")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
@@ -248,7 +262,14 @@ namespace Garage2._0.Controllers
             }
             if (option == "RegNum")
             {
-                return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Vehicles.ToList());
+                }
+                else
+                {
+                    return View(db.Vehicles.Where(e => e.RegNum.ToLower() == search.ToLower() || search == null).ToList());
+                }             
             }
             else if (option == "VehicleType")
             {
@@ -269,11 +290,25 @@ namespace Garage2._0.Controllers
                     default:
                         break;
                 }
-                return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Vehicles.ToList());
+                }
+                else
+                {
+                    return View(db.Vehicles.Where(e => e.TypeId.ToString() == search.ToLower() || search == null).ToList());
+                }             
             }
             else
             {
-                return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
+                if (search == "")
+                {
+                    return View(db.Vehicles.ToList());
+                }
+                else
+                {
+                    return View(db.Vehicles.Where(e => e.Color.ToString().ToLower() == search.ToLower() || search.ToLower() == null).ToList());
+                }              
             }
         }
 
